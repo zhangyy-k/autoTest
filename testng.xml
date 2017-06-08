@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="认证产品自动化测试">
+    <test name="统招线上-冒然场景测试-报名缴费通过考试-chrome">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="testCase.smokeTest.entranExamPassOnlineCase"></class>
+        </classes>
+    </test>
+    <test name="统招线上-冒然场景测试-报名未缴费-chrome">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="testCase.smokeTest.entranExamNoPayOnlineCase"></class>
+        </classes>
+    </test>
+</suite>
+
