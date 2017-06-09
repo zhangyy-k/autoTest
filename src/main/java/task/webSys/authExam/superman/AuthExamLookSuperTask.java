@@ -35,9 +35,9 @@ public class AuthExamLookSuperTask {
         MyActions.click(AuthExamLookSuperObjcet.getPublishiButton_superman(authExamName),driver);
         MyActions.click(AuthExamLookSuperObjcet.dailog_yes_superman,driver);
         //判断审核成功 提示框 是否显示
-//        boolean b = MyActions.isDisplayed(AuthExamLookSuperObjcet.daiog_sucessful,driver);
-//        log.info("管理员-审核-认证考试-审核成功提示框是否显示："+String.valueOf(b));
-//        MyAssert.assertTrue(b);
+        boolean b = MyActions.isDisplayed(AuthExamLookSuperObjcet.daiog_sucessful,driver);
+        log.info("管理员-审核-认证考试-审核成功提示框是否显示："+String.valueOf(b));
+        MyAssert.assertTrue(b);
         MyActions.click(AuthExamLookSuperObjcet.dailog_ok_superman,driver);
         driver.quit();
     }
