@@ -24,6 +24,8 @@ public class AuthExamStuObject {
 
     //倒计时p标签
     public static By countDownText = By.xpath(".//*[contains(text(),'倒计时:')]");
+    //倒计时页面  开始考试  按钮
+    public static By examStartButton = By.id("btn1");
 
     //退出考试 按钮
     public static By exitExamButton = By.xpath(".//body/nav/div/div[2]/button[1]");

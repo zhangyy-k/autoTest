@@ -42,6 +42,36 @@ public class AuthExamStuTask {
         //点击进入考试
         By enterExamButton = AuthExamStuObject.getEnterExamButton(authExamName);
         MyActions.click(enterExamButton,driver);
+
+        //判断考试是否已经开始
+        boolean b = MyActions.isDisplayed(AuthExamStuObject.countDownText,driver);
+        if(b){
+            //等待 考试倒计时
+            long sleepTime = -1;
+            sleepTime = enterExamCountDown(driver);
+            log.info("距离考试开始还有"+String.valueOf(sleepTime)+"毫秒，请等待……");
+            Thread.sleep(sleepTime);
+            log.info("考试开始");
+            MyActions.click(AuthExamStuObject.examStartButton,driver);
+        }else
+            log.info("考试已经开始");
+
+        //交卷
+        handExam(stuUserMobil,driver);
+        //检验 已经交卷
+        isHandExam_Y(stuUserMobil,authExamName,driver);
+        driver.quit();
+    }
+
+    /**
+     * 未打开算量软件，交卷
+     *@Author zhangyy
+     *@Date 2017-6-9 13:41
+     * @param stuUserMobil 学生登录账号
+     * @param driver 当前浏览器对象
+     *
+     */
+    public static void handExam(String stuUserMobil,WebDriver driver) throws InterruptedException{
         //点击交卷
         MyActions.click(AuthExamStuObject.handExamButton,driver);
         //直接交卷按钮
@@ -55,10 +85,20 @@ public class AuthExamStuTask {
         MyAssert.assertTrue(b);
         //点击 提示框 确定按钮
         MyActions.click(AuthExamStuObject.handExamSucessfulExceptionOkButton,driver);
+    }
 
+    /**
+     * 检验点 已经交卷(考试列表  进入考试 变为 已经交卷；且不可用)
+     *@Author zhangyy
+     *@Date 2017-6-9 13:44
+     * @param stuUserMobil 学生登录账号
+     * @param authExamName 认证考试名称
+     * @param driver 当前浏览器对象
+     */
+    public static void isHandExam_Y(String stuUserMobil,String authExamName,WebDriver driver){
         //返回考试列表  进入考试 变为 已经交卷；且不可用
         //判断考试是否结束
-        Thread.sleep(5000);
+        By enterExamButton = AuthExamStuObject.getEnterExamButton(authExamName);
         boolean enterExamButtonIsD = MyActions.isDisplayed(enterExamButton,driver);
         log.info("学生:"+stuUserMobil+"考试列表是否显示该考试："+String.valueOf(enterExamButtonIsD));
         if(enterExamButtonIsD){
@@ -74,7 +114,6 @@ public class AuthExamStuTask {
         }else{
             log.info("该考试已经结束，不在考试列表显示！");
         }
-        driver.quit();
     }
 
     /**
@@ -90,7 +129,7 @@ public class AuthExamStuTask {
     }
 
     /**
-     * 判断考试列表是否有该场考试
+     * 检验点 考试列表没有该场考试
      *@Author zhangyy
      *@Date 2017-6-8 13:52
      */
@@ -104,5 +143,15 @@ public class AuthExamStuTask {
         MyAssert.assertFalse(b);
         driver.quit();
     }
+
+    /**
+     * 考试进入考试，判断倒计时
+     *@Author zhangyy
+     *@Date 2017-6-9 13:30
+     */
+    public static long enterExamCountDown(WebDriver driver) throws InterruptedException{
+        return (long)MyActions.executeJS("return residue",driver);
+    }
+
 
 }

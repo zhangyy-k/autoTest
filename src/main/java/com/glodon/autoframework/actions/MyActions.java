@@ -129,13 +129,15 @@ public class MyActions extends MyDriver {
      *@Author zhangyy
      *@Date 2017-6-2 9:14
      */
-    public static void executeJS(String str,WebDriver driver){
+    public static Object executeJS(String str,WebDriver driver){
+        Object object = null;
         try {
             JavascriptExecutor js = (JavascriptExecutor) driver;
-            js.executeScript(str);
+            object = js.executeScript(str);
         }catch (Exception e){
             log.info("执行js代码过程错误");
         }
+        return object;
     }
 
     /**
