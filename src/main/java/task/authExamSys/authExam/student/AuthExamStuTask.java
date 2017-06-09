@@ -59,6 +59,7 @@ public class AuthExamStuTask {
         //交卷
         handExam(stuUserMobil,driver);
         //检验 已经交卷
+        Thread.sleep(5000);
         isHandExam_Y(stuUserMobil,authExamName,driver);
         driver.quit();
     }

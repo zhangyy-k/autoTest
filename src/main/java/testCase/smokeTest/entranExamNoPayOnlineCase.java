@@ -48,10 +48,6 @@ public class entranExamNoPayOnlineCase implements WebDriverHost {
     private AuthExam authExam = null;
     //认证考试考试名称
     private String authExamName = null;
-    //认证考试开始时间和结束时间
-    Date authExamStartTime = null , authExamEndTime = null;
-    //倒计时等待时间（毫秒）
-    long sleepTime = -1;
     //老师账号
     String teaUserName = null,teaUserPwd=null;
     //管理员账号
@@ -105,17 +101,6 @@ public class entranExamNoPayOnlineCase implements WebDriverHost {
         AuthExamLookSuperTask.passAuthExam(supernamUserName,superUserPwd,authExamName,driver);
         log.infoEnd("管理员-登录-审核认证考试-通过");
 
-        //获取考试开始时间和结束时间
-        List<Object[]> list = AuthExamStuTask.getAuthExamTime(authExamName);
-        if(list.size() > 0){
-            //考试开始时间
-            authExamStartTime = DateFormat.format(DEFAULT_DATE_FORMAT, list.get(0)[0].toString());
-            //考试结束时间
-            authExamEndTime = DateFormat.format(DEFAULT_DATE_FORMAT, list.get(0)[1].toString());
-            log.info("考试："+authExamName+"；开始时间："+String.valueOf(authExamStartTime)+";结束时间："+String.valueOf(authExamEndTime));
-        }else{
-            log.info("没有查询到认证考试的开始时间和结束时间");
-        }
 
         //遍历学生账号和密码
         if(stuUsers != null) {
@@ -136,13 +121,6 @@ public class entranExamNoPayOnlineCase implements WebDriverHost {
             log.info("学生账号集合为空");
         }
 
-//        //考试开始-倒计时-处理
-//        sleepTime = DateFormat.timeDifference(authExamStartTime);
-//        if(sleepTime > 0){
-//            log.info("距离考试开始还有"+String.valueOf(sleepTime)+"毫秒，请等待……");
-//            Thread.sleep(sleepTime);
-//            log.info("考试开始");
-//        }
 
         //学生-登录考试系统-考试列表-判断是否有该考试
         if(stuUsersNew != null){

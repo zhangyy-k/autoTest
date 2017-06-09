@@ -146,13 +146,13 @@ public class entranExamPassOnlineCase implements WebDriverHost {
             log.info("学生账号集合为空");
         }
 
-        //考试开始-倒计时-处理
-        sleepTime = DateFormat.timeDifference(authExamStartTime);
-        if(sleepTime > 0){
-            log.info("距离考试开始还有"+String.valueOf(sleepTime)+"毫秒，请等待……");
-            Thread.sleep(sleepTime);
-            log.info("考试开始");
-        }
+//        //考试开始-倒计时-处理
+//        sleepTime = DateFormat.timeDifference(authExamStartTime);
+//        if(sleepTime > 0){
+//            log.info("距离考试开始还有"+String.valueOf(sleepTime)+"毫秒，请等待……");
+//            Thread.sleep(sleepTime);
+//            log.info("考试开始");
+//        }
 
         //学生-登录考试系统-考试
         if(stuUsersNew != null){
