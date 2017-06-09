@@ -25,12 +25,12 @@ public class MyDriver {
 //    public static String testURL = "http://testper-autotest.glodonedu.com";
 
     private String hubURL = "http://172.16.231.38:4446/wd/hub";
-    private String nodeFireFoxURL = "http://172.16.231.45:8888/wd/hub";
-    private String nodeChromeURL = "http://172.16.231.45:8888/wd/hub";
-    private String nodeIEURL = "http://172.16.231.45:8888/wd/hub";
-    private String authBrowserWin7 = "http://172.16.231.45:8888/wd/hub";
-    private String authBrowserWin8 = "http://172.16.231.45:8888/wd/hub";
-    private String authBrowserXP = "http://172.16.231.45:8888/wd/hub";
+    private String nodeFireFoxURL = "http://172.16.231.38:8888/wd/hub";
+    private String nodeChromeURL = "http://172.16.231.38:8888/wd/hub";
+    private String nodeIEURL = "http://172.16.231.38:8888/wd/hub";
+    private String authBrowserWin7 = "http://172.16.231.38:8888/wd/hub";
+    private String authBrowserWin8 = "http://172.16.231.38:8888/wd/hub";
+    private String authBrowserXP = "http://172.16.231.38:8888/wd/hub";
 
     //根据浏览器类型返回 Webdriver对象
     public WebDriver openBrowser(String browser) throws MalformedURLException {
