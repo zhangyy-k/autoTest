@@ -44,7 +44,9 @@ public class AuthExamStuTask {
         MyActions.click(enterExamButton,driver);
 
         //判断考试是否已经开始
-        boolean b = MyActions.isDisplayed(AuthExamStuObject.countDownText,driver);
+        By examStartButton = AuthExamStuObject.examStartButton;//倒计时页面 开始考试 按钮
+        boolean b = MyActions.isDisplayed(examStartButton,driver);
+        log.info("是否需要等待考试开始："+b);
         if(b){
             //等待 考试倒计时
             long sleepTime = -1;
@@ -52,7 +54,7 @@ public class AuthExamStuTask {
             log.info("距离考试开始还有"+String.valueOf(sleepTime)+"毫秒，请等待……");
             Thread.sleep(sleepTime);
             log.info("考试开始");
-            MyActions.click(AuthExamStuObject.examStartButton,driver);
+            MyActions.click(examStartButton,driver);
         }else
             log.info("考试已经开始");
 

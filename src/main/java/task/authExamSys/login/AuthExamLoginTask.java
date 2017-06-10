@@ -2,7 +2,9 @@ package task.authExamSys.login;
 
 import com.glodon.autoframework.actions.MyActions;
 import object.authExamSys.login.AuthExamLoginObject;
+import object.webSys.authExam.superman.AuthExamLookSuperObjcet;
 import org.openqa.selenium.WebDriver;
+import sun.awt.windows.ThemeReader;
 
 /**
  * 考试系统-登录-业务逻辑处理
@@ -18,7 +20,11 @@ public class AuthExamLoginTask {
      * @param passWord 登录用户名密码
      * @param driver 当前打开的浏览器对象
      */
-    public static void authExamLogin(String userName,String passWord, WebDriver driver){
+    public static void authExamLogin(String userName,String passWord, WebDriver driver) throws InterruptedException{
+        Thread.sleep(5000);
+        //点击 登录页面  提示框
+        MyActions.click(AuthExamLoginObject.loginDialog,driver);
+        Thread.sleep(1000);
         //输入用户名
         MyActions.sendText(AuthExamLoginObject.userNameText,userName,driver);
         //输入密码

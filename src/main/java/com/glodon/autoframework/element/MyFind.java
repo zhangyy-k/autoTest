@@ -31,7 +31,7 @@ public class MyFind extends MyDriver {
         } catch (Exception e) {
             log.error("元素:" + by + "查找超时");
 //            System.out.println("元素:" + by + "查找超时");
-            e.printStackTrace();
+        //    e.printStackTrace();
         }
         return webElement;
     }

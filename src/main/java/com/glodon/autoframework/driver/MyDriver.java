@@ -21,16 +21,21 @@ import java.util.Properties;
  */
 public class MyDriver {
     private final static LoggerControler log = LoggerControler.getLogger(MyDriver.class);
-    public static String testURL = "http://172.16.230.107:7080";
-//    public static String testURL = "http://testper-autotest.glodonedu.com";
+    //测试地址
+    public String testURL = null;
+    //hub和node地址
+    private String hubURL = null;
+    private String nodeFireFoxURL = null;
+    private String nodeChromeURL = null;
+    private String nodeIEURL = null;
+    private String authBrowserWin7 = null;
+    private String authBrowserWin8 = null;
+    private String authBrowserXP = null;
 
-    private String hubURL = "http://172.16.231.38:4446/wd/hub";
-    private String nodeFireFoxURL = "http://172.16.231.38:8888/wd/hub";
-    private String nodeChromeURL = "http://172.16.231.38:8888/wd/hub";
-    private String nodeIEURL = "http://172.16.231.38:8888/wd/hub";
-    private String authBrowserWin7 = "http://172.16.231.38:8888/wd/hub";
-    private String authBrowserWin8 = "http://172.16.231.38:8888/wd/hub";
-    private String authBrowserXP = "http://172.16.231.38:8888/wd/hub";
+    public MyDriver(){
+        getURL();
+        getTestURL();
+    }
 
     //根据浏览器类型返回 Webdriver对象
     public WebDriver openBrowser(String browser) throws MalformedURLException {
@@ -85,4 +90,44 @@ public class MyDriver {
         }
         return driver;
     }
+
+    //读取hub和node
+    public void getURL(){
+        //本地hub和node
+        String configFile = System.getProperty("user.dir") +"/config/localSeleniumGrid.properties";
+        //阿里hub和node
+//        String configFile = System.getProperty("user.dir") +"/config/ailSeleniumGrid.properties";
+        Properties properties = new Properties();
+        try{
+            properties.load(new FileInputStream(configFile));
+            hubURL = properties.getProperty("hubURL");
+            nodeChromeURL = properties.getProperty("nodeChromeURL");
+            nodeFireFoxURL = properties.getProperty("nodeFireFoxURL");
+            nodeIEURL = properties.getProperty("nodeIEURL");
+            authBrowserWin7 = properties.getProperty("authBrowserWin7");
+            authBrowserWin8 = properties.getProperty("authBrowserWin8");
+            authBrowserXP = properties.getProperty("authBrowserXP");
+        }catch (Exception e){
+            log.error("错误的seleniumGrid配置文件路径");
+        }
+    }
+
+    //读取测试地址
+    public void getTestURL(){
+        //本地测试地址
+        String configFile = System.getProperty("user.dir") +"/config/localTestURL.properties";
+        //阿里自动化测试地址
+//        String configFile = System.getProperty("user.dir") +"/config/ailTestMutoURL.properties";
+        //阿里功能测试地址
+//        String configFile = System.getProperty("user.dir") +"/config/ailTestURL.properties";
+        Properties properties = new Properties();
+        try{
+            properties.load(new FileInputStream(configFile));
+            testURL = properties.getProperty("testURL");
+        }catch (Exception e){
+            log.error("错误的测试地址");
+        }
+    }
+
+
 }

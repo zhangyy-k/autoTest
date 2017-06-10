@@ -2,9 +2,11 @@ package com.glodon.autoframework.tools;
 
 import com.glodon.autoframework.logger.LoggerControler;
 
+import java.io.FileInputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * 数据库操作类
@@ -15,13 +17,40 @@ public class MyDataBase {
     static final LoggerControler log = LoggerControler.getLogger(MyDataBase.class);
 
     //声明Mysql数据库的驱动
-    private static String driver= "com.mysql.jdbc.Driver";
+    private static String driver = null;
     //声明本地数据库的Ip地址和数据库名称
-    private static String url = "jdbc:mysql://172.16.230.1:3306/personcenterdata_test";
+    private static String dataBaseName = null;
     //声明数据库的用户名
-    private static String userName = "root";
+    private static String dataBaseUser = null;
     //声明数据库root用户的登录密码
-    private static String password = "root";
+    private static String dataBasePwd = null;
+
+    private MyDataBase(){
+        getDataBaseInfo();
+    }
+
+    /**
+     * 读取数据库信息
+     *@Author zhangyy
+     *@Date 2017-6-10 9:30
+     */
+    //读取测试地址
+    public void getDataBaseInfo(){
+        //本地测试地址
+        String configFile = System.getProperty("user.dir") +"/config/localDtaBase.properties";
+        //阿里自动化测试地址
+//        String configFile = System.getProperty("user.dir") +"/config/ailDataBase.properties";
+        Properties properties = new Properties();
+        try{
+            properties.load(new FileInputStream(configFile));
+            driver = properties.getProperty("driver");
+            dataBaseName = properties.getProperty("dataBaseName");
+            dataBaseUser = properties.getProperty("dataBaseUser");
+            dataBasePwd = properties.getProperty("dataBasePwd");
+        }catch (Exception e){
+            log.error("错误的测试地址");
+        }
+    }
 
     /**
      * 更新数据库表
@@ -35,7 +64,7 @@ public class MyDataBase {
             //设定mysql驱动
             Class.forName(driver);
             //声明数据库连接
-            Connection conn = DriverManager.getConnection(url,userName,password);
+            Connection conn = DriverManager.getConnection(dataBaseName,dataBaseUser,dataBasePwd);
             //如果数据库连接可用，打印数据库连接成功
             if(!conn.isClosed())
                 log.info("数据库连接成功");
@@ -72,7 +101,7 @@ public class MyDataBase {
             //设定mysql驱动
             Class.forName(driver);
             //声明数据库连接
-            Connection conn = DriverManager.getConnection(url,userName,password);
+            Connection conn = DriverManager.getConnection(dataBaseName,dataBaseUser,dataBasePwd);
             //如果数据库连接可用，打印数据库连接成功
             if(!conn.isClosed())
                 log.info("数据库连接成功");

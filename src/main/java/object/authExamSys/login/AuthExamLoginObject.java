@@ -9,6 +9,9 @@ import org.openqa.selenium.By;
  */
 public class AuthExamLoginObject {
 
+    //登录页面提示框，是，登录系统
+    public static By loginDialog = By.xpath(".//*[contains(text(),'是，登录系统')]");
+
     //登录文本框
     public static By userNameText = By.id("username");
     //密码输入框
