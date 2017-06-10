@@ -126,8 +126,9 @@ public class AuthExamStuTask {
      * @param authExamName 认证考试名称
      */
     public static List<Object[]> getAuthExamTime(String authExamName){
+        MyDataBase myDataBase = new MyDataBase();
         String sql = " SELECT a.start_time,a.end_time from au_exam_info a where a.title = '"+authExamName+"' ";
-        List<Object[]> list = MyDataBase.selectData(sql);
+        List<Object[]> list = myDataBase.selectData(sql);
         return list;
     }
 

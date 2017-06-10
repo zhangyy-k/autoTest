@@ -17,15 +17,15 @@ public class MyDataBase {
     static final LoggerControler log = LoggerControler.getLogger(MyDataBase.class);
 
     //声明Mysql数据库的驱动
-    private static String driver = null;
+    private String driver = null;
     //声明本地数据库的Ip地址和数据库名称
-    private static String dataBaseName = null;
+    private String dataBaseName = null;
     //声明数据库的用户名
-    private static String dataBaseUser = null;
+    private String dataBaseUser = null;
     //声明数据库root用户的登录密码
-    private static String dataBasePwd = null;
+    private String dataBasePwd = null;
 
-    private MyDataBase(){
+    public MyDataBase(){
         getDataBaseInfo();
     }
 
@@ -58,7 +58,7 @@ public class MyDataBase {
      *@Date 2017-6-5 15:15
      * @param sql 更新sql语句
      */
-    public static int updateData(String sql){
+    public int updateData(String sql){
         int results = -1;
         try {
             //设定mysql驱动
@@ -95,7 +95,7 @@ public class MyDataBase {
      *@Date 2017-6-5 15:15
      * @param sql 查询sql语句
      */
-    public static List<Object[]> selectData(String sql){
+    public List<Object[]> selectData(String sql){
         List<Object[]> records = new ArrayList<Object[]>();
         try{
             //设定mysql驱动

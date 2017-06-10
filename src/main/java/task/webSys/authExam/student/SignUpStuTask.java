@@ -3,6 +3,7 @@ package task.webSys.authExam.student;
 import com.glodon.autoframework.actions.MyActions;
 import com.glodon.autoframework.logger.LoggerControler;
 import com.glodon.autoframework.tools.MyAssert;
+import com.glodon.autoframework.tools.MyDataBase;
 import entity.webSys.SignUpInfo;
 import object.webSys.authExam.student.AuthExamSignUpStuObject;
 import object.webSys.index.IndexObject;
@@ -11,7 +12,6 @@ import org.openqa.selenium.WebDriver;
 import task.webSys.login.WebLoginTask;
 import task.webSys.menu.student.MenuStuTask;
 
-import static com.glodon.autoframework.tools.MyDataBase.updateData;
 
 /**
  * 学生-报名缴费-业务逻辑处理
@@ -89,13 +89,14 @@ public class SignUpStuTask {
      */
     public static void updataSignUpState(String authExamName,String mobil){
         int result = 0;
+        MyDataBase myDataBase = new MyDataBase();
         String sql = " UPDATE au_register d,au_exam_order e set d.is_pay = 1, e.is_pay = 1 " +
               " WHERE d.order_id = e.id AND d.id in ( " +
               " SELECT c.id FROM " +
               " (SELECT b.id from au_register_info a LEFT JOIN au_register b on a.id = b.register_no " +
               " where a.exam_name = '"+authExamName+"' and a.mobile = '"+mobil+"') c) ";
         try{
-            result = updateData(sql);
+            result = myDataBase.updateData(sql);
             log.info("更新学生:"+mobil+"缴费状态影响行数"+result);
         }catch (Exception e){
             e.printStackTrace();
