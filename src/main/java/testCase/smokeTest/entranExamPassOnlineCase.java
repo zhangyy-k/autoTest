@@ -93,7 +93,7 @@ public class entranExamPassOnlineCase implements WebDriverHost {
     }
 
     @Test
-    @Description("冒然测试-统招线上类考试（新建考试-审核通过-报名-缴费-参加考试-颁发证书-查看证书）")
+    @Description("冒烟测试-统招线上（新建考试-审核通过-报名-缴费-参加考试-颁发证书-查看证书）")
     @Parameters({"browser"})
     public void entranExamOnlineTest(String browser) throws MalformedURLException,InterruptedException{
         log.infoStart("冒然测试-统招线上类考试（新建考试-审核通过-报名-缴费-参加考试-颁发证书-查看证书）");
