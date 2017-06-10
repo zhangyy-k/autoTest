@@ -97,6 +97,7 @@ public class entranExamPassOnlineCase implements WebDriverHost {
     @Parameters({"browser"})
     public void entranExamOnlineTest(String browser) throws MalformedURLException,InterruptedException{
         log.infoStart("冒然测试-统招线上类考试（新建考试-审核通过-报名-缴费-参加考试-颁发证书-查看证书）");
+        log.info("当前浏览器为："+browser);
 
         //老师-登录-发布认证考试
         log.infoStart("老师-登录-发布认证考试");
