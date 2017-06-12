@@ -37,9 +37,9 @@ public class MyDataBase {
     //读取测试地址
     public void getDataBaseInfo(){
         //本地测试地址
-//        String configFile = System.getProperty("user.dir") +"/config/localDtaBase.properties";
+        String configFile = System.getProperty("user.dir") +"/config/localDtaBase.properties";
         //阿里自动化测试地址
-        String configFile = System.getProperty("user.dir") +"/config/ailDataBase.properties";
+//        String configFile = System.getProperty("user.dir") +"/config/ailDataBase.properties";
         Properties properties = new Properties();
         try{
             properties.load(new FileInputStream(configFile));

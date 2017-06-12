@@ -22,7 +22,7 @@ import java.util.Properties;
 public class MyDriver {
     private final static LoggerControler log = LoggerControler.getLogger(MyDriver.class);
     //测试地址
-    public String testURL = null;
+    public static String testURL = null;
     //hub和node地址
     private String hubURL = null;
     private String nodeFireFoxURL = null;
@@ -34,7 +34,6 @@ public class MyDriver {
 
     public MyDriver(){
         getURL();
-        getTestURL();
     }
 
     //根据浏览器类型返回 Webdriver对象
@@ -94,9 +93,9 @@ public class MyDriver {
     //读取hub和node
     public void getURL(){
         //本地hub和node
-//        String configFile = System.getProperty("user.dir") +"/config/localSeleniumGrid.properties";
+        String configFile = System.getProperty("user.dir") +"/config/localSeleniumGrid.properties";
         //阿里hub和node
-        String configFile = System.getProperty("user.dir") +"/config/ailSeleniumGrid.properties";
+//        String configFile = System.getProperty("user.dir") +"/config/ailSeleniumGrid.properties";
         Properties properties = new Properties();
         try{
             properties.load(new FileInputStream(configFile));
@@ -115,11 +114,11 @@ public class MyDriver {
     //读取测试地址
     public void getTestURL(){
         //本地测试地址
-//        String configFile = System.getProperty("user.dir") +"/config/localTestURL.properties";
+        String configFile = System.getProperty("user.dir") +"/config/localTestURL.properties";
         //阿里自动化测试地址
 //        String configFile = System.getProperty("user.dir") +"/config/ailTestMutoURL.properties";
         //阿里功能测试地址
-        String configFile = System.getProperty("user.dir") +"/config/ailTestURL.properties";
+//        String configFile = System.getProperty("user.dir") +"/config/ailTestURL.properties";
         Properties properties = new Properties();
         try{
             properties.load(new FileInputStream(configFile));
