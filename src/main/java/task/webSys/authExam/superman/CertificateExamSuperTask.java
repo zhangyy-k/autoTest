@@ -44,6 +44,7 @@ public class CertificateExamSuperTask {
         MyActions.toWindow(driver);
         //点击 生成证书按钮
         MyActions.click(CertificateExamSuperObject.certificateButton,driver);
+        Thread.sleep(2000);
         //判断 证书生成一次 提示框 是否存在
         boolean b = MyActions.isDisplayed(CertificateExamSuperObject.certtificatDailog,driver);
         log.info("证书生成一次提示框是否存在："+String.valueOf(b));
