@@ -41,19 +41,25 @@ public class MyDriver {
         WebDriver driver = null;
 
         if (browser.equals("chrome")) {
+            log.info("nodeChromeURL:"+nodeChromeURL);
             DesiredCapabilities dc = DesiredCapabilities.chrome();
             driver = setWebBrowser(nodeChromeURL,dc);
         } else if (browser.equals("ie")) {
+            log.info("nodeIEURL:"+nodeIEURL);
             DesiredCapabilities dc =DesiredCapabilities.internetExplorer();
             driver = setWebBrowser(nodeIEURL,dc);
         } else if (browser.equals("firefox")) {
+            log.info("nodeFireFoxURL:"+nodeFireFoxURL);
             DesiredCapabilities dc =DesiredCapabilities.firefox();
             driver = setWebBrowser(nodeFireFoxURL,dc);
         } else if(browser.equals("authBrowserWin7")){
+            log.info("authBrowserWin7:"+authBrowserWin7);
             driver = setAuthBrowser(authBrowserWin7);
         }else if(browser.equals("authBrowserWin8")){
+            log.info("authBrowserWin8:"+authBrowserWin8);
             driver = setAuthBrowser(authBrowserWin8);
         }  else if(browser.equals("authBrowserXP")){
+            log.info("authBrowserXP:"+authBrowserXP);
             driver = setAuthBrowser(authBrowserXP);
         } else {
             log.error("你传入的浏览器名有误为：" + browser);
