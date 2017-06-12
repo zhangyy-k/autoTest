@@ -34,6 +34,7 @@ public class MyDriver {
 
     public MyDriver(){
         getURL();
+        getTestURL();
     }
 
     //根据浏览器类型返回 Webdriver对象
@@ -129,6 +130,7 @@ public class MyDriver {
         try{
             properties.load(new FileInputStream(configFile));
             testURL = properties.getProperty("testURL");
+            log.info("测试地址为："+testURL);
         }catch (Exception e){
             log.error("错误的测试地址");
         }
