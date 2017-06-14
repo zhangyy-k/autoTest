@@ -23,17 +23,18 @@ public class AddAuthExamTeaObject {
     public static By examLevel = By.xpath(".//*[@id='level']/input"); //考试级别
     public static By examSubjectZy = By.name("subjectZyId");//考试专业
     public static By examSubjectId = By.name("subjectId");//考试科目
-    public static By examStartTime = By.id("_startTime");//考试时间 开始时间
-    public static By examEndTime = By.id("_endTime");//考试时间  结束时间
+    public static String examStartTime = "_startTime";//考试时间 开始时间
+    public static String examEndTime = "_endTime";//考试时间  结束时间
     public static By examCapacity = By.id("capacity");//考场容量
     public static By examAddress = By.xpath(".//*[@name='address']");//考试地点
     public static By examAddressTrip = By.xpath(".//*[@name='address']/following-sibling::span");//考试地点 输入提示
 
     //缴费信息
-    public static By pay_contacts = By.name("pay_contacts_wrong");//缴费联系人
+    public static By pay_contacts = By.name("pay_contacts");//缴费联系人
     public static By pay_mobile = By.name("pay_mobile");//联系人电话
     public static By pay_address = By.name("pay_address");//考生缴费地址
-    public static By pay_endTime = By.name("pay_endTime");//缴费截止时间
+    public static String pay_endTime = "pay_endTime";//缴费截止时间
+    public static By pay_endTimeInput = By.name("pay_endTime");//缴费截止时间
 
     //其他信息
     public static By remarkContainer = By.className("ke-edit-iframe");//考试说明

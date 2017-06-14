@@ -18,6 +18,22 @@ public class MyActions extends MyDriver {
     final static LoggerControler log = LoggerControler.getLogger(MyActions.class);
 
     /**
+     * 刷新页面
+     *@Author zhangyy
+     *@Date 2017-6-13 14:45
+     */
+    public static void refresh(WebDriver driver){
+        driver.navigate().refresh();
+    }
+
+    /**
+     * 获取当前url
+     *@Author zhangyy
+     *@Date 2017-6-13 20:53
+     */
+    public static String getCurrentUrl(WebDriver driver){return driver.getCurrentUrl();}
+
+    /**
      * clcik() 封装
      *@Author zhangyy
      *@Date 2017-4-17 16:03
@@ -173,5 +189,11 @@ public class MyActions extends MyDriver {
             log.info("滚动条拖到底部错误");
         }
     }
+
+    /**
+     * 鼠标
+     *@Author zhangyy
+     *@Date 2017-6-13 18:57
+     */
 
 }

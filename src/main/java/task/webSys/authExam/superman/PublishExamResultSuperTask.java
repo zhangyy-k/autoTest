@@ -2,6 +2,7 @@ package task.webSys.authExam.superman;
 
 
 import com.glodon.autoframework.actions.MyActions;
+import com.glodon.autoframework.element.MyFind;
 import com.glodon.autoframework.logger.LoggerControler;
 import com.glodon.autoframework.tools.DateFormat;
 import com.glodon.autoframework.tools.MyAssert;
@@ -10,10 +11,12 @@ import object.webSys.authExam.superman.PublishExamResultSuperObject;
 import object.webSys.index.IndexObject;
 import object.webSys.menu.MenuObject;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import task.webSys.login.WebLoginTask;
 import task.webSys.menu.superman.MenuSuperTask;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import static com.glodon.autoframework.tools.DateFormat.DEFAULT_DATE_FORMAT;
@@ -28,7 +31,7 @@ public class PublishExamResultSuperTask {
 
 
     /**
-     * 管理员-发布考试结果
+     * 管理员-发布考试结果-考生都及格
      *@Author zhangyy
      *@Date 2017-6-6 15:29
      * @param supermanUser 管理员账号
@@ -65,6 +68,24 @@ public class PublishExamResultSuperTask {
         MyAssert.assertTrue(b);
         //点击 成功对话框 确定按钮
         MyActions.click(PublishExamResultSuperObject.publishButtonSuccessDailog_ok,driver);
+
+        //判断 成绩大约等于60的 学生级别为基础级
+        //发布考试后 获取考生列表
+        Thread.sleep(1000);
+        List<WebElement > list = MyFind.findElements(PublishExamResultSuperObject.publishedStuTRRows,driver);
+        int counts = list.size();
+        log.info("发布成绩后，考生列表共有："+counts+"个考生！");
+        for(int i =1;i < counts + 1;i++){
+            //获取考生姓名
+            String stuMobil = MyActions.getText(PublishExamResultSuperObject.getpublishedStuMobil(i),driver);
+            //获取考生成绩
+            String stuScore = MyActions.getText(PublishExamResultSuperObject.getpublishedStuScore(i),driver);
+            //获取考生级别
+            String stuLevel = MyActions.getText(PublishExamResultSuperObject.getpublishedStuLevel(i),driver);
+            log.info("考生："+stuMobil+"；考试成绩为："+stuScore+"；考试级别为："+stuLevel);
+            MyAssert.assertEquals(stuLevel,"基础级");
+        }
+
         driver.quit();
     }
 

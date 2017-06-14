@@ -34,6 +34,26 @@ public class MenuSuperTask {
     }
 
     /**
+     * 管理员-登录-点击左侧“认证考试-缴费查看”子菜单，进入考试列表
+     *@Author zhangyy
+     *@Date 2017-6-8 9:47
+     * @param supermanUser 管理员账号
+     * @param password 管理员账号密码
+     * @param driver 当前浏览器对象
+     */
+    public static void payLookMenu(String supermanUser, String password,WebDriver driver) throws InterruptedException{
+        //管理员-登录
+        WebLoginTask.webLogin(supermanUser,password,driver);
+        //进入"我的中心"
+        MyActions.click(IndexObject.myCenterButton, driver);
+        //点击左侧"认证考试"菜单
+        MyActions.click(MenuObject.item_authExam, driver);
+        //点击左侧“认证考试-缴费查看”子菜单，进入考试列表
+        Thread.sleep(1000);
+        MyActions.click(MenuObject.menuItem_payLook_superman,driver);
+    }
+
+    /**
      * 管理员-登录-点击左侧“证书管理-证书颁发”子菜单，进入考试列表
      *@Author zhangyy
      *@Date 2017-6-8 9:47

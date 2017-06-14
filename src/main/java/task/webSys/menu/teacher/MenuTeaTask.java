@@ -32,4 +32,24 @@ public class MenuTeaTask {
         Thread.sleep(1000);
         MyActions.click(MenuObject.menuItem_publishExamInfo_teacher, driver);
     }
+
+    /**
+     * 登录-点击左侧"认证考试-报名缴费管理"子菜单，进入考试列表
+     *@Author zhangyy
+     *@Date 2017-6-8 9:37
+     * @param teacherUser 老师登录账号
+     * @param password 老师账号密码
+     * @param driver 当前浏览器对象
+     */
+    public static void signUpPayMenu(String teacherUser,String password,WebDriver driver) throws InterruptedException{
+        //老师-登录
+        WebLoginTask.webLogin(teacherUser,password, driver);
+        //进入"我的中心"
+        MyActions.click(IndexObject.myCenterButton, driver);
+        //点击左侧"认证考试"菜单
+        MyActions.click(MenuObject.item_authExam, driver);
+        //点击左侧"认证考试-报名缴费管理"子菜单，进入考试列表
+        Thread.sleep(1000);
+        MyActions.click(MenuObject.menuItem_signUpPay_teacher, driver);
+    }
 }

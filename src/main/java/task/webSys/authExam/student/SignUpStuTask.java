@@ -12,6 +12,8 @@ import org.openqa.selenium.WebDriver;
 import task.webSys.login.WebLoginTask;
 import task.webSys.menu.student.MenuStuTask;
 
+import java.util.Map;
+
 
 /**
  * 学生-报名缴费-业务逻辑处理
@@ -22,7 +24,7 @@ public class SignUpStuTask {
     static final LoggerControler log = LoggerControler.getLogger(SignUpStuTask.class);
 
     /**
-     * 学生报名
+     * 学生报名-统招线上
      *@Author zhangyy
      *@Date 2017-6-6 14:57
      * @param stuUserMobil 学生登录账号
@@ -31,7 +33,7 @@ public class SignUpStuTask {
      * @param signUpInfo 学生报名信息
      * @param driver 当前浏览器对象
      */
-    public static void signUp(String stuUserMobil, String password, String authExamName, SignUpInfo signUpInfo, WebDriver driver) throws InterruptedException{
+    public static void signUpOnlinePay(String stuUserMobil, String password, String authExamName, SignUpInfo signUpInfo, WebDriver driver) throws InterruptedException{
         //学生-登录-点击左侧“认证考试-认证报名”子菜单，进入报名页面-点击我要报名，进入详情报名页面
         MenuStuTask.signUpMenu(stuUserMobil,password,authExamName,driver);
         //修改报名信息
@@ -43,6 +45,38 @@ public class SignUpStuTask {
         boolean b = MyActions.isDisplayed(AuthExamSignUpStuObject.paySucess,driver);
         log.info("学生:"+stuUserMobil+"-报名缴费成功提示是否跳转："+String.valueOf(b));
         MyAssert.assertTrue(b);
+        driver.quit();
+    }
+
+    /**
+     * 学生报名-统招线下
+     *@Author zhangyy
+     *@Date 2017-6-6 14:57
+     * @param stuUserMobil 学生登录账号
+     * @param password 学生登录密码
+     * @param authExamName 认证考试名称
+     * @param signUpInfo 学生报名信息
+     * @param driver 当前浏览器对象
+     */
+    public static void signUpUnderlinePay(String stuUserMobil, String password,
+                                          String authExamName, SignUpInfo signUpInfo, Map<String,String> payInfo, WebDriver driver) throws InterruptedException{
+        //学生-登录-点击左侧“认证考试-认证报名”子菜单，进入报名页面-点击我要报名，进入详情报名页面
+        MenuStuTask.signUpMenu(stuUserMobil,password,authExamName,driver);
+        //修改报名信息
+        editSignUpInfo(signUpInfo,driver);
+        Thread.sleep(2000);
+        //点击 提交报名信息 按钮
+        MyActions.click(AuthExamSignUpStuObject.submitSignUp,driver);
+
+        //判断 提示付款方式，显示信息与老师填写信息一致
+        for (Map.Entry<String,String> entry :payInfo.entrySet()){
+            log.info(entry.getKey()+entry.getValue());
+            boolean b = MyActions.isDisplayed(AuthExamSignUpStuObject.textIsDisplay(entry.getValue()),driver);
+            log.info("学生:"+stuUserMobil+"报名;线下缴费付款方式:"+entry.getKey()+"显示是否正确："+String.valueOf(b));
+            MyAssert.assertTrue(b);
+        }
+
+
         driver.quit();
     }
 
@@ -66,7 +100,7 @@ public class SignUpStuTask {
         //身份证号
         MyActions.sendText(AuthExamSignUpStuObject.signUpIdentityCard,signUpInfo.getIdentity(),driver);
         //毕业时间
-        MyActions.executeJS("document.getElementsByName(\"graduationDate\")[0].setAttribute(\"value\",'" + signUpInfo.getGraduationDate() + "')",driver);
+        MyActions.executeJS("document.getElementsByName('"+AuthExamSignUpStuObject.signUpGraduationDate+"')[0].setAttribute(\"value\",'" + signUpInfo.getGraduationDate() + "')",driver);
         //所属单位
         MyActions.sendText(AuthExamSignUpStuObject.signUpCompany,signUpInfo.getCompany(),driver);
         //点击 确定 按钮

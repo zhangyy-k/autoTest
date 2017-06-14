@@ -110,7 +110,7 @@ public class entranExamNoPayOnlineCase implements WebDriverHost {
                 driver = myDriver.openBrowser(browser);
                 driver.get(testURL);
                 SignUpInfo signUpInfo = signUpInfo();
-                SignUpStuTask.signUp(entry.getKey(), entry.getValue(), authExamName,signUpInfo, driver);
+                SignUpStuTask.signUpOnlinePay(entry.getKey(), entry.getValue(), authExamName,signUpInfo, driver);
 
                 //初始化 学生新账号Map集合中 学生账号
                 stuUsersNew.put(signUpInfo.getMobil(),"123456");

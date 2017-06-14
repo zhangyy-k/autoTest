@@ -16,9 +16,13 @@ public class MenuObject {
 
     //老师角色：认证考试-发布考试信息
     public static By menuItem_publishExamInfo_teacher = By.xpath(".//*[text()='发布考试信息']");
+    //老师角色：认证考试-报名缴费管理
+    public static By menuItem_signUpPay_teacher = By.xpath(".//*[text()='报名缴费管理']");
 
     //管理员角色：认证考试-考试查看
     public static By menuItem_examLook_superman = By.xpath(".//*[text()='考试查看']");
+    //管理员角色：认证考试-缴费查看
+    public static By menuItem_payLook_superman = By.xpath(".//*[text()='缴费查看']");
     //管理员角色：认证考试-发布考试结果
     public static By menuItem_publishExamResult_superman = By.xpath(".//*[text()='发布考试结果']");
     //管理员角色：认证考试-发布考试结果

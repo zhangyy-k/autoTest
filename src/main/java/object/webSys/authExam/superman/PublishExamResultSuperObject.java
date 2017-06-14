@@ -19,6 +19,7 @@ public class PublishExamResultSuperObject {
     //已发布
     public static By yesPublishTab = By.xpath(".//*[@id='examTab1']/li[2]");
 
+    ///////////////////////////////////////////////认证考试-未发布////////////////////////////////////////////////////
     //列表中   查看成绩 按钮
     public static By getlookScoreButton(String examName){
         return By.xpath(".//*[contains(text(),'"+examName+"')]/parent::td/following-sibling::td[6]/input");
@@ -32,6 +33,21 @@ public class PublishExamResultSuperObject {
     public static By publishiSuccessDailog = By.xpath(".//*[contains(text(),'发布级别成功')]");
     //发布级别成功提示 确定按钮
     public static By publishButtonSuccessDailog_ok = By.xpath(".//a[@class='layui-layer-btn0']");
+
+    //发布级别后  考生列表行
+    public static By publishedStuTRRows = By.xpath(".//*[@id='examStudentList']/table/tbody/tr");
+    //发布级别后  根据row的index获取考生手机号
+    public static By getpublishedStuMobil(int index){
+        return By.xpath(".//*[@id='examStudentList']/table/tbody/tr["+index+"]/td[3]");
+    }
+    //发布级别后  根据row的index获取考生成绩
+    public static By getpublishedStuScore(int index){
+        return By.xpath(".//*[@id='examStudentList']/table/tbody/tr["+index+"]/td[6]");
+    }
+    //发布级别后  根据row的index获取考生级别
+    public static By getpublishedStuLevel(int index){
+        return By.xpath(".//*[@id='examStudentList']/table/tbody/tr["+index+"]/td[7]");
+    }
 
     //修改考试成绩 修改按钮
     public static By getEditScoreButton(String userMobil){

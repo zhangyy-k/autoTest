@@ -77,6 +77,7 @@ public class MyDriver {
             driver.manage().window().maximize();
         }catch (Exception e){
             log.error("设置web端浏览器兼容性错误");
+            e.printStackTrace();
         }
         return driver;
     }
@@ -93,6 +94,7 @@ public class MyDriver {
             driver = new RemoteWebDriver(new URL(authBroserNode), dc);
         }catch (Exception e){
             log.error("设置专用浏览器兼容性错误");
+            e.printStackTrace();
         }
         return driver;
     }

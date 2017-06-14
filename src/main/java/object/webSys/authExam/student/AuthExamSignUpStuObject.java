@@ -35,7 +35,7 @@ public class AuthExamSignUpStuObject {
     //身份证
     public static By signUpIdentityCard = By.id("identityCard");
     //毕业时间
-    public static By signUpGraduationDate = By.xpath(".//*[@id='graduationDateTD']/input");
+    public static String signUpGraduationDate = "graduationDate";
     //所属单位
     public static By signUpCompany = By.name("company");
 
@@ -51,4 +51,12 @@ public class AuthExamSignUpStuObject {
 
     //支付成功提示
     public static By paySucess = By.xpath(".//*[@id='contentDetail']/p[1]");
+
+
+    //线下支付 提示
+    public static By underLinePayText = By.xpath(".//*[contains(text(),'本次考试为线下缴费')]");
+    //根据文本，判断是否在页面上存在
+    public static By textIsDisplay(String text){
+        return By.xpath(".//*[contains(text(),'"+text+"')]");
+    }
 }

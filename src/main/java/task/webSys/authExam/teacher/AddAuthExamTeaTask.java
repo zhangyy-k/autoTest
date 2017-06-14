@@ -9,6 +9,7 @@ import entity.webSys.AuthExam;
 import object.webSys.authExam.teacher.AddAuthExamTeaObject;
 import object.webSys.index.IndexObject;
 import object.webSys.menu.MenuObject;
+import org.omg.PortableServer.THREAD_POLICY_ID;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -72,8 +73,8 @@ public class AddAuthExamTeaTask {
 //        select.selectByVisibleText(authExam.getExamSubjectId());
         //考试时间
           //去掉时间输入框的js限制
-        MyActions.executeJS("document.getElementById(\"_startTime\").setAttribute(\"value\",'"+authExam.getStartTime()+"')",driver);
-        MyActions.executeJS("document.getElementById(\"_endTime\").setAttribute(\"value\",'"+authExam.getEndTime()+"')",driver);
+        MyActions.executeJS("document.getElementById('"+AddAuthExamTeaObject.examStartTime+"').setAttribute('value','"+authExam.getStartTime()+"')",driver);
+        MyActions.executeJS("document.getElementById('"+AddAuthExamTeaObject.examEndTime+"').setAttribute('value','"+authExam.getEndTime()+"')",driver);
 
         //考场容量
         MyActions.sendText(AddAuthExamTeaObject.examCapacity,authExam.getExamCapacity(), driver);
@@ -82,11 +83,14 @@ public class AddAuthExamTeaTask {
 
         //统招线下 缴费信息
         if(authExam.getExamType().equals("统招线下")){
-            MyActions.sendText(AddAuthExamTeaObject.pay_contacts,authExam.getPay_contacts(), driver);//缴费联系人
-            MyActions.sendText(AddAuthExamTeaObject.pay_mobile,String.valueOf(DateFormat.time()/100), driver);//联系人电话
-            MyActions.sendText(AddAuthExamTeaObject.pay_address,authExam.getPay_address(), driver);//考生缴费地址
+            //缴费联系人
+            MyActions.sendText(AddAuthExamTeaObject.pay_contacts,authExam.getPay_contacts(), driver);
+            //联系人电话
+            MyActions.sendText(AddAuthExamTeaObject.pay_mobile,authExam.getPay_mobile(), driver);
+            //考生缴费地址
+            MyActions.sendText(AddAuthExamTeaObject.pay_address,authExam.getPay_address(), driver);
             //缴费截止时间
-            MyActions.executeJS("document.getElementsByName(\"pay_endTime\")[0].setAttribute(\"value\",'"+authExam.getPay_endTime()+"')",driver);
+            MyActions.executeJS("document.getElementsByName('"+AddAuthExamTeaObject.pay_endTime+"')[0].setAttribute('value','"+authExam.getPay_endTime()+"')",driver);
         }
 
         //考试说明

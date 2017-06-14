@@ -25,7 +25,7 @@ public class LookAuthExamMatterSuperTask {
     static final LoggerControler log = LoggerControler.getLogger(LookAuthExamMatterSuperTask.class);
 
     /**
-     * 管理员-查看考试情况
+     * 管理员-查看考试情况-正在进行的考试
      *@Author zhangyy
      *@Date 2017-6-7 14:49
      * @param supermanUser 管理员账号
@@ -33,13 +33,13 @@ public class LookAuthExamMatterSuperTask {
      * @param authExamName 认证考试名称
      * @param driver 当前浏览器对象
      */
-    public static void lookExamMatter(String supermanUser, String password,
+    public static void lookExamingMatter(String supermanUser, String password,
                                       String authExamName, WebDriver driver) throws InterruptedException{
 
         //管理员-登录-点击左侧“证书管理-查看考试情况”子菜单，进入考试列表
         MenuSuperTask.enterLookExamMatterMenu(supermanUser,password,driver);
         //点击 认证考试-正在进行考试-认证考试列表中  查看按钮
-        MyActions.click(LookAuthExamMatterSuperObject.getLookExamButton(authExamName),driver);
+        MyActions.click(LookAuthExamMatterSuperObject.getLookExamingButton(authExamName),driver);
         //控制权移交给新页面
         MyActions.toWindow(driver);
 
@@ -56,6 +56,45 @@ public class LookAuthExamMatterSuperTask {
             //获取考生交卷时间
             String stuHandTime = MyActions.getText(LookAuthExamMatterSuperObject.getEnterExamStuTRHandTime(i),driver);
             log.info("学生："+stuMobil+"的考试成绩为："+stuScore+";交卷时间为："+stuHandTime);
+            MyAssert.assertEquals(stuScore,"0.00");
+        }
+        driver.quit();
+    }
+
+    /**
+     * 管理员-查看考试情况-已结束的考试
+     *@Author zhangyy
+     *@Date 2017-6-7 14:49
+     * @param supermanUser 管理员账号
+     * @param password 管理员账号密码
+     * @param authExamName 认证考试名称
+     * @param driver 当前浏览器对象
+     */
+    public static void lookExamEndMatter(String supermanUser, String password,
+                                         String authExamName, WebDriver driver) throws InterruptedException{
+
+        //管理员-登录-点击左侧“证书管理-查看考试情况”子菜单，进入考试列表
+        MenuSuperTask.enterLookExamMatterMenu(supermanUser,password,driver);
+        //点击 已结束的考试tab页
+        MyActions.click(LookAuthExamMatterSuperObject.examEndTab,driver);
+        //点击 认证考试-正在进行考试-认证考试列表中  查看按钮
+        MyActions.click(LookAuthExamMatterSuperObject.getLookExamEndButton(authExamName),driver);
+        //控制权移交给新页面
+        MyActions.toWindow(driver);
+
+        //获取未通过考试的考生列表
+        Thread.sleep(5000);
+        List<WebElement> list = MyFind.findElements(LookAuthExamMatterSuperObject.unpassStuTRCounts,driver);
+        int unpassStuCounts = list.size();
+        log.info("未通过考试的学生数："+String.valueOf(unpassStuCounts));
+        for(int i = 1;i < unpassStuCounts + 1;i++){
+            //获取考生姓名
+            String stuName = MyActions.getText(LookAuthExamMatterSuperObject.getunpassStuTRName(i),driver);
+            //获取考生成绩
+            String stuScore = MyActions.getText(LookAuthExamMatterSuperObject.getunpassStuTRScore(i),driver);
+            //获取考生结果
+            String stuResult = MyActions.getText(LookAuthExamMatterSuperObject.getunpassStuTRResult(i),driver);
+            log.info("学生："+stuName+"的考试成绩为："+stuScore+";考试结果为："+stuResult);
             MyAssert.assertEquals(stuScore,"0.00");
         }
         driver.quit();
