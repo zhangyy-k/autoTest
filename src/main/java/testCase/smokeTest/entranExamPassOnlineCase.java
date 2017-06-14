@@ -180,6 +180,12 @@ public class entranExamPassOnlineCase implements WebDriverHost {
         LookAuthExamMatterSuperTask.lookExamEndMatter(supernamUserName,superUserPwd,authExamName,driver);
         log.infoEnd("管理员-登录-查看考试情况-已结束的考试");
 
+        //管理员-登录-发布考试结果及修改考生成绩
+        log.infoStart("管理员-登录-发布考试结果及修改考生成绩");
+        driver = myDriver.openBrowser(browser);driver.get(testURL);
+        PublishExamResultSuperTask.publishExamResult(supernamUserName,superUserPwd,authExamName,stuUsersEditScore,driver);
+        log.infoEnd("管理员-登录-发布考试结果及修改考生成绩");
+
         //管理员-登录-证书颁发
         log.infoStart("管理员-登录-证书颁发");
         driver = myDriver.openBrowser(browser);driver.get(testURL);
@@ -209,8 +215,8 @@ public class entranExamPassOnlineCase implements WebDriverHost {
         authExam.setExamType("统招线上");
         authExam.setExamName("统上自动化1-");
         authExam.setExamSubjectZy("土建");
-        authExam.setStartTime(DateFormat.formatCalendar(DEFAULT_DATE_FORMAT,3));
-        authExam.setEndTime(DateFormat.formatCalendar(DEFAULT_DATE_FORMAT,6));
+        authExam.setStartTime(DateFormat.formatCalendar(DEFAULT_DATE_FORMAT,4));
+        authExam.setEndTime(DateFormat.formatCalendar(DEFAULT_DATE_FORMAT,7));
         authExam.setExamCapacity("60");
         authExam.setExamAddress("济南广联达济南广联达");
         authExam.setRemarkContainer("自动化测试测试");

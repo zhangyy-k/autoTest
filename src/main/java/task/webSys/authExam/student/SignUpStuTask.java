@@ -37,6 +37,7 @@ public class SignUpStuTask {
         //学生-登录-点击左侧“认证考试-认证报名”子菜单，进入报名页面-点击我要报名，进入详情报名页面
         MenuStuTask.signUpMenu(stuUserMobil,password,authExamName,driver);
         //修改报名信息
+        Thread.sleep(2000);
         editSignUpInfo(signUpInfo,driver);
         Thread.sleep(2000);
         //点击 提交报名信息 按钮

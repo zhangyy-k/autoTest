@@ -80,16 +80,16 @@ public class entranExamPassUnderlineCase implements WebDriverHost {
         supernamUserName="superman";superUserPwd="123456";
         //学生账号和密码
         stuUsers = new HashMap<>();
-        stuUsers.put("10000000005","123456");
-        stuUsers.put("10000000002","123456");
-        stuUsers.put("10000000004","123456");
+        stuUsers.put("10000000051","123456");
+        stuUsers.put("10000000052","123456");
+        stuUsers.put("10000000053","123456");
         //学生新账号
         stuUsersNew = new HashMap<>();
         //学生账号及修改成绩
         stuUsersEditScore = new HashMap<>();
-        stuUsersEditScore.put("10000000005",70.0);
-        stuUsersEditScore.put("10000000002",80.5);
-        stuUsersEditScore.put("10000000004",90.5);
+        stuUsersEditScore.put("10000000051",70.0);
+        stuUsersEditScore.put("10000000052",80.5);
+        stuUsersEditScore.put("10000000053",90.5);
     }
 
     @Test
@@ -233,8 +233,8 @@ public class entranExamPassUnderlineCase implements WebDriverHost {
         authExam.setExamType("统招线下");
         authExam.setExamName("统下自动化3-");
         authExam.setExamSubjectZy("土建");
-        authExam.setStartTime(DateFormat.formatCalendar(DEFAULT_DATE_FORMAT,3));
-        authExam.setEndTime(DateFormat.formatCalendar(DEFAULT_DATE_FORMAT,6));
+        authExam.setStartTime(DateFormat.formatCalendar(DEFAULT_DATE_FORMAT,4));
+        authExam.setEndTime(DateFormat.formatCalendar(DEFAULT_DATE_FORMAT,7));
         authExam.setExamCapacity("60");
         authExam.setExamAddress("济南广联达济南广联达");
         authExam.setRemarkContainer("自动化测试测试");
