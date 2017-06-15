@@ -35,6 +35,5 @@ public class MyCertificateStuTask {
         boolean b = MyActions.isDisplayed(MyCertificateStuObject.getCertificateText(certificateCode),driver);
         log.info("学生:"+stuUserMobil+"的证书是否显示："+String.valueOf(b)+";编号为:"+certificateCode);
         MyAssert.assertTrue(b);
-        driver.quit();
     }
 }

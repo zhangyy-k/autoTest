@@ -103,12 +103,14 @@ public class entranExamPassOnlineCase implements WebDriverHost {
         log.infoStart("老师-登录-发布认证考试");
         driver = myDriver.openBrowser(browser);driver.get(testURL);
         AddAuthExamTeaTask.publishAuthExam(teaUserName,teaUserPwd,authExam,driver);
+        driver.quit();
         log.infoEnd("老师-登录-发布认证考试");
 
         //管理员-登录-审核认证考试-通过
         log.infoStart("管理员-登录-审核认证考试-通过");
         driver = myDriver.openBrowser(browser);driver.get(testURL);
         AuthExamLookSuperTask.passAuthExam(supernamUserName,superUserPwd,authExamName,driver);
+        driver.quit();
         log.infoEnd("管理员-登录-审核认证考试-通过");
 
         //获取考试开始时间和结束时间
@@ -132,6 +134,7 @@ public class entranExamPassOnlineCase implements WebDriverHost {
                 driver.get(testURL);
                 SignUpInfo signUpInfo = signUpInfo();
                 SignUpStuTask.signUpOnlinePay(entry.getKey(), entry.getValue(), authExamName,signUpInfo, driver);
+                driver.quit();
 
                 //更新学生缴费状态
                 SignUpStuTask.updataSignUpState(authExamName, signUpInfo.getMobil());
@@ -153,6 +156,7 @@ public class entranExamPassOnlineCase implements WebDriverHost {
                 log.infoStart("学生:"+entry.getKey()+";登录考试系统开始考试");
                 driver = myDriver.openBrowser("authBrowserWin7");
                 AuthExamStuTask.enterAuthExam(entry.getKey(), entry.getValue(),authExamName,driver);
+                driver.quit();
                 log.infoEnd("学生:"+entry.getKey()+";登录考试系统开始考试");
             }
         }else{
@@ -163,6 +167,7 @@ public class entranExamPassOnlineCase implements WebDriverHost {
         log.infoStart("管理员-登录-查看考试情况-正在进行的考试");
         driver = myDriver.openBrowser(browser);driver.get(testURL);
         LookAuthExamMatterSuperTask.lookExamingMatter(supernamUserName,superUserPwd,authExamName,driver);
+        driver.quit();
         log.infoEnd("管理员-登录-查看考试情况-正在进行的考试");
 
         //考试结束-倒计时-处理
@@ -178,18 +183,21 @@ public class entranExamPassOnlineCase implements WebDriverHost {
         log.infoStart("管理员-登录-查看考试情况-已结束的考试");
         driver = myDriver.openBrowser(browser);driver.get(testURL);
         LookAuthExamMatterSuperTask.lookExamEndMatter(supernamUserName,superUserPwd,authExamName,driver);
+        driver.quit();
         log.infoEnd("管理员-登录-查看考试情况-已结束的考试");
 
         //管理员-登录-发布考试结果及修改考生成绩
         log.infoStart("管理员-登录-发布考试结果及修改考生成绩");
         driver = myDriver.openBrowser(browser);driver.get(testURL);
         PublishExamResultSuperTask.publishExamResult(supernamUserName,superUserPwd,authExamName,stuUsersEditScore,driver);
+        driver.quit();
         log.infoEnd("管理员-登录-发布考试结果及修改考生成绩");
 
         //管理员-登录-证书颁发
         log.infoStart("管理员-登录-证书颁发");
         driver = myDriver.openBrowser(browser);driver.get(testURL);
         Map<String,String> passStu = CertificateExamSuperTask.certificateExam(supernamUserName,superUserPwd,authExamName,driver);
+        driver.quit();
         log.infoEnd("管理员-登录-证书颁发");
 
         //学生-登录-我的证书
@@ -199,6 +207,7 @@ public class entranExamPassOnlineCase implements WebDriverHost {
                 log.infoStart("学生:"+entry.getKey()+";查看我的证书");
                 driver = myDriver.openBrowser(browser);driver.get(testURL);
                 MyCertificateStuTask.lookMyCertificate(entry.getKey(),"123456",entry.getValue(),driver);
+                driver.quit();
                 log.infoEnd("学生:"+entry.getKey()+";查看我的证书");
             }
         }else{

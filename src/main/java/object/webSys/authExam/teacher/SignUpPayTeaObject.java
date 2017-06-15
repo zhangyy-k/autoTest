@@ -55,6 +55,11 @@ public class SignUpPayTeaObject {
     //缴费成功 提示框 确认按钮
     public static By paySuccessDailog_ok_button = By.xpath(".//a[@class='layui-layer-btn0']");
 
+    //退费成功 提示框
+    public static By returnPaySuccessDailog = By.xpath(".//*[contains(text(),'退费成功')]");
+    //退费成功 提示框 确认按钮
+    public static By returnPaySuccessDailog_ok_button = By.xpath(".//a[@class='layui-layer-btn0']");
+
     //线上支付 按钮
     public static By onLineButton = By.xpath(".//*[contains(text(),'线上支付')]");
     //线下支付 按钮

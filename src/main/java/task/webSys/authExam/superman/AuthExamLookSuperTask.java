@@ -39,6 +39,5 @@ public class AuthExamLookSuperTask {
         log.info("管理员-审核-认证考试-审核成功提示框是否显示："+String.valueOf(b));
         MyAssert.assertTrue(b);
         MyActions.click(AuthExamLookSuperObjcet.dailog_ok_superman,driver);
-        driver.quit();
     }
 }

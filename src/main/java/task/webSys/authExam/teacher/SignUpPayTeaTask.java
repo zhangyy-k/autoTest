@@ -45,27 +45,96 @@ public class SignUpPayTeaTask {
         int counts = list.size();
         log.info("需确认缴费学生共有："+counts+"个");
         for(int i = 1;i < counts + 1;i++){
-            //学生名称
-            String stuName = MyActions.getText(SignUpPayTeaObject.getStuName(i),driver);
-
-            //根据row的index 获取 确认缴费 按钮
-            MyActions.click(SignUpPayTeaObject.getSurePayButton(i),driver);
-            //点击确认缴费 提示框 确定按钮
-            MyActions.click(SignUpPayTeaObject.surePayDailog_ok_button,driver);
-            //判断 确认缴费成功提示框  是否存在
-            boolean b = MyActions.isDisplayed(SignUpPayTeaObject.paySuccessDailog,driver);
-            log.info("学生："+stuName+"确认缴费成功提示框是否存在："+b);
-            MyAssert.assertTrue(b);
-            //点击 成功提示框 确定按钮
-            MyActions.click(SignUpPayTeaObject.paySuccessDailog_ok_button,driver);
-
-            Thread.sleep(1000);
-            //缴费状态
-            String payState = MyActions.getText(SignUpPayTeaObject.getPayState(i),driver);
-            log.info("学生："+stuName+"的缴费状态为："+payState);
-            MyAssert.assertInclude(payState,"已缴费",driver);
+            //根据考生详情列表行号 确认学生缴费
+            sureStuPayByRowIndex(i,driver);
         }
-        driver.quit();
+    }
+
+    /**
+     * 老师-确认学生缴费-退费
+     *@Author zhangyy
+     *@Date 2017-6-15 11:09
+     * @param teacherUser 老师登录账号
+     * @param password 老师账号密码
+     * @param authExamName 认证考试名称
+     * @param driver 当前浏览器对象
+     */
+    public static void returnStuPay(String teacherUser, String password,
+                                    String authExamName, WebDriver driver) throws InterruptedException{
+        //老师-登录-点击左侧"认证考试-报名缴费管理"子菜单，进入考试列表
+        MenuTeaTask.signUpPayMenu(teacherUser,password,driver);
+        //点击 缴费明细 按钮
+        MyActions.click(SignUpPayTeaObject.getPayDetailButton(authExamName),driver);
+        //控制权移交
+        MyActions.toWindow(driver);
+        Thread.sleep(2000);
+        //获取缴费学生详情 列表
+        List<WebElement> list = MyFind.findElements(SignUpPayTeaObject.payStuRows,driver);
+        int counts = list.size();
+        log.info("需确认缴费学生共有："+counts+"个");
+        for(int i = 1;i < counts + 1;i++){
+            //根据考生详情列表行号 确认学生缴费
+            sureStuPayByRowIndex(i,driver);
+            //根据考生详情列表行号 退费
+            returnStuPayByRowIndex(i,driver);
+        }
+    }
+
+    /**
+     * 老师-确认学生缴费-方法(根据考生详情列表行号 确认学生缴费)
+     *@Author zhangyy
+     *@Date 2017-6-15 11:27
+     *@param rowIndex 考生详情列表行号
+     * @param driver 当前浏览器对象
+     */
+    public static void sureStuPayByRowIndex(int rowIndex,WebDriver driver) throws InterruptedException{
+        //学生名称
+        String stuName = MyActions.getText(SignUpPayTeaObject.getStuName(rowIndex),driver);
+
+        //根据row的index 获取 确认缴费 按钮
+        MyActions.click(SignUpPayTeaObject.getSurePayButton(rowIndex),driver);
+        //点击确认缴费 提示框 确定按钮
+        MyActions.click(SignUpPayTeaObject.surePayDailog_ok_button,driver);
+        //判断 确认缴费成功提示框  是否存在
+        boolean b = MyActions.isDisplayed(SignUpPayTeaObject.paySuccessDailog,driver);
+        log.info("学生："+stuName+"确认缴费成功提示框是否存在："+b);
+        MyAssert.assertTrue(b);
+        //点击 成功提示框 确定按钮
+        MyActions.click(SignUpPayTeaObject.paySuccessDailog_ok_button,driver);
+
+        Thread.sleep(1000);
+        //缴费状态
+        String payState = MyActions.getText(SignUpPayTeaObject.getPayState(rowIndex),driver);
+        log.info("学生："+stuName+"的缴费状态为："+payState);
+        MyAssert.assertInclude(payState,"已缴费",driver);
+    }
+
+    /**
+     * 老师-退费-方法(根据考生详情列表行号 确认学生缴费)
+     *@Author zhangyy
+     *@Date 2017-6-15 11:30
+     */
+    public static void returnStuPayByRowIndex(int rowIndex,WebDriver driver) throws InterruptedException{
+        //点击退费 按钮
+
+        //学生名称
+        String stuName = MyActions.getText(SignUpPayTeaObject.getStuName(rowIndex),driver);
+        //根据row的index 获取 退费 按钮 点击
+        MyActions.click(SignUpPayTeaObject.getSurePayButton(rowIndex),driver);
+        //点击退费 提示框 确定按钮
+        MyActions.click(SignUpPayTeaObject.surePayDailog_ok_button,driver);
+        //判断 退费成功提示框  是否存在
+        boolean b = MyActions.isDisplayed(SignUpPayTeaObject.returnPaySuccessDailog,driver);
+        log.info("学生："+stuName+"退费成功提示框是否存在："+b);
+        MyAssert.assertTrue(b);
+        //点击 成功提示框 确定按钮
+        MyActions.click(SignUpPayTeaObject.returnPaySuccessDailog_ok_button,driver);
+
+        Thread.sleep(1000);
+        //缴费状态
+        String payState = MyActions.getText(SignUpPayTeaObject.getPayState(rowIndex),driver);
+        log.info("学生："+stuName+"的缴费状态为："+payState);
+        MyAssert.assertInclude(payState,"已退费",driver);
     }
 
     /**
@@ -139,8 +208,6 @@ public class SignUpPayTeaTask {
         String payedText = MyActions.getText(SignUpPayTeaObject.getPayedText(authExamName),driver);
         log.info("已支付是否为："+payedText);
         MyAssert.assertEquals(payedText,"已支付");
-
-        driver.quit();
     }
     
     /**

@@ -61,8 +61,6 @@ public class PayLookSuperTask {
         b = MyActions.isDisplayed(PayLookSuperObject.getPayedAuthExamRow(authExamName),driver);
         log.info("考试："+authExamName+";是否在已支付列表中："+b);
         MyAssert.assertTrue(b);
-
-        driver.quit();
     }
 
 }

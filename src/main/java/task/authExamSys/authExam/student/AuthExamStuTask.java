@@ -63,7 +63,6 @@ public class AuthExamStuTask {
         //检验 已经交卷
         Thread.sleep(5000);
         isHandExam_Y(stuUserMobil,authExamName,driver);
-        driver.quit();
     }
 
     /**
@@ -145,7 +144,6 @@ public class AuthExamStuTask {
         boolean b = MyActions.isDisplayed(AuthExamStuObject.authExamRow(authExamName),driver);
         log.info("学生："+stuUserMobil+"；登录考试-考试列表中是否存在该场考试："+String.valueOf(b));
         MyAssert.assertFalse(b);
-        driver.quit();
     }
 
     /**

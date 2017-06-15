@@ -58,7 +58,6 @@ public class LookAuthExamMatterSuperTask {
             log.info("学生："+stuMobil+"的考试成绩为："+stuScore+";交卷时间为："+stuHandTime);
             MyAssert.assertEquals(stuScore,"0.00");
         }
-        driver.quit();
     }
 
     /**
@@ -97,6 +96,5 @@ public class LookAuthExamMatterSuperTask {
             log.info("学生："+stuName+"的考试成绩为："+stuScore+";考试结果为："+stuResult);
             MyAssert.assertEquals(stuScore,"0.00");
         }
-        driver.quit();
     }
 }

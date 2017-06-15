@@ -30,12 +30,12 @@ import java.util.Map;
 import static com.glodon.autoframework.tools.DateFormat.DEFAULT_DATE_FORMAT;
 
 /**
- * 冒烟测试-统招线下类考试--测试脚本(报名缴费，考试通过)
+ * 冒烟测试-统招线下类考试--测试脚本(报名缴费，退费)
  *@Author zhangyy
- *@Date 2017-6-13 10:11
+ *@Date 2017-6-15 10:13
  */
-public class entranExamPassUnderlineCase implements WebDriverHost {
-    static final LoggerControler log = LoggerControler.getLogger(entranExamPassUnderlineCase.class);
+public class entranExamUnderlineReturnPayCase implements WebDriverHost {
+    static final LoggerControler log = LoggerControler.getLogger(entranExamUnderlineReturnPayCase.class);
 
     private MyDriver myDriver = new MyDriver();
     //web端测试地址
@@ -46,10 +46,6 @@ public class entranExamPassUnderlineCase implements WebDriverHost {
     private AuthExam authExam = null;
     //认证考试考试名称
     private String authExamName = null;
-    //认证考试开始时间和结束时间
-    Date authExamStartTime = null , authExamEndTime = null;
-    //倒计时等待时间（毫秒）
-    long sleepTime = -1;
     //老师账号
     String teaUserName = null,teaUserPwd=null;
     //管理员账号
@@ -57,8 +53,6 @@ public class entranExamPassUnderlineCase implements WebDriverHost {
     //学生账号及密码
     Map<String,String> stuUsers = null;
     Map<String,String> stuUsersNew = null;
-    //学生账号及修改成绩
-    Map<String,Double > stuUsersEditScore = null;
     //报名付款信息判断
     Map<String,String> payInfo = null;
 
@@ -80,23 +74,16 @@ public class entranExamPassUnderlineCase implements WebDriverHost {
         supernamUserName="superman";superUserPwd="123456";
         //学生账号和密码
         stuUsers = new HashMap<>();
-        stuUsers.put("10000000051","123456");
-        stuUsers.put("10000000052","123456");
-        stuUsers.put("10000000053","123456");
+        stuUsers.put("10000000021","123456");
         //学生新账号
         stuUsersNew = new HashMap<>();
-        //学生账号及修改成绩
-        stuUsersEditScore = new HashMap<>();
-        stuUsersEditScore.put("10000000051",70.0);
-        stuUsersEditScore.put("10000000052",80.5);
-        stuUsersEditScore.put("10000000053",90.5);
     }
 
     @Test
-    @Description("冒烟测试-统招线下（新建考试-审核通过-报名-确认缴费-参加考试-发布成绩-给广联达汇款-颁发证书-查看证书）")
+    @Description("冒烟测试-统招线下（新建考试-审核通过-报名-确认缴费-退费-无法参考）")
     @Parameters({"browser"})
     public void entranExamPassOnlineTest(String browser) throws MalformedURLException,InterruptedException{
-        log.infoStart("冒烟测试-统招线下（新建考试-审核通过-报名-确认缴费-参加考试-发布成绩-给广联达汇款-颁发证书-查看证书）");
+        log.infoStart("冒烟测试-统招线下（新建考试-审核通过-报名-确认缴费-退费-无法参考）");
         log.info("当前浏览器为："+browser);
 
         //老师-登录-发布认证考试
@@ -113,18 +100,6 @@ public class entranExamPassUnderlineCase implements WebDriverHost {
         driver.quit();
         log.infoEnd("管理员-登录-审核认证考试-通过");
 
-        //获取考试开始时间和结束时间
-        List<Object[]> list = AuthExamStuTask.getAuthExamTime(authExamName);
-        if(list.size() > 0){
-            //考试开始时间
-            authExamStartTime = DateFormat.format(DEFAULT_DATE_FORMAT, list.get(0)[0].toString());
-            //考试结束时间
-            authExamEndTime = DateFormat.format(DEFAULT_DATE_FORMAT, list.get(0)[1].toString());
-            log.info("考试："+authExamName+"；开始时间："+String.valueOf(authExamStartTime)+";结束时间："+String.valueOf(authExamEndTime));
-        }else{
-            log.info("没有查询到认证考试的开始时间和结束时间");
-        }
-
         //遍历学生账号和密码  登录-报名
         if(stuUsers != null) {
             for (Map.Entry<String, String> entry : stuUsers.entrySet()) {
@@ -136,9 +111,6 @@ public class entranExamPassUnderlineCase implements WebDriverHost {
                 SignUpStuTask.signUpUnderlinePay(entry.getKey(), entry.getValue(), authExamName,signUpInfo,payInfo,driver);
                 driver.quit();
 
-                //更新 学生账号及修改成绩Map集合中 学生账号
-                if(stuUsersEditScore.containsKey(entry.getKey()))
-                    stuUsersEditScore.put(signUpInfo.getMobil(),stuUsersEditScore.remove(entry.getKey()));
                 //初始化 学生新账号Map集合中 学生账号
                 stuUsersNew.put(signUpInfo.getMobil(),"123456");
                 log.info("学生："+entry.getKey()+"报名手机为："+signUpInfo.getMobil());
@@ -148,94 +120,27 @@ public class entranExamPassUnderlineCase implements WebDriverHost {
             log.info("学生账号集合为空");
         }
 
-        //老师-登录-确认缴费
+        //老师-登录-确认缴费-退费
         log.infoStart("老师-登录-确认缴费");
         driver = myDriver.openBrowser(browser);driver.get(testURL);
-        SignUpPayTeaTask.sureStuPay(teaUserName,teaUserPwd,authExamName,driver);
+        SignUpPayTeaTask.returnStuPay(teaUserName,teaUserPwd,authExamName,driver);
         driver.quit();
         log.infoEnd("老师-登录-确认缴费");
 
-        //学生-登录考试系统-考试
+        //学生-登录考试系统-考试列表-判断是否有该考试
         if(stuUsersNew != null){
             for(Map.Entry<String,String> entry : stuUsersNew.entrySet()){
-                log.infoStart("学生:"+entry.getKey()+";登录考试系统开始考试");
+                log.infoStart("学生:"+entry.getKey()+";考试系统查看是否有该考试："+authExamName);
                 driver = myDriver.openBrowser("authBrowserWin7");
-                AuthExamStuTask.enterAuthExam(entry.getKey(), entry.getValue(),authExamName,driver);
+                AuthExamStuTask.authExamIsDisplay(entry.getKey(),entry.getValue(),authExamName,driver);
                 driver.quit();
-                log.infoEnd("学生:"+entry.getKey()+";登录考试系统开始考试");
+                log.infoEnd("学生:"+entry.getKey()+";考试系统查看是否有该考试："+authExamName);
             }
         }else{
             log.info("学生账号集合为空");
         }
 
-        //管理员-查看考试情况-正在进行的考试
-        log.infoStart("管理员-登录-查看考试情况-正在进行的考试");
-        driver = myDriver.openBrowser(browser);driver.get(testURL);
-        LookAuthExamMatterSuperTask.lookExamingMatter(supernamUserName,superUserPwd,authExamName,driver);
-        driver.quit();
-        log.infoEnd("管理员-登录-查看考试情况-正在进行的考试");
-
-        //考试结束-倒计时-处理
-        sleepTime = -1;
-        sleepTime = DateFormat.timeDifference(authExamEndTime);
-        if(sleepTime > 0){
-            log.info("距离考试结束还有"+String.valueOf(sleepTime)+"毫秒，请等待……");
-            Thread.sleep(sleepTime);
-            log.info("考试结束");
-        }
-
-        //管理员-查看考试情况-已结束的考试
-        log.infoStart("管理员-登录-查看考试情况-已结束的考试");
-        driver = myDriver.openBrowser(browser);driver.get(testURL);
-        LookAuthExamMatterSuperTask.lookExamEndMatter(supernamUserName,superUserPwd,authExamName,driver);
-        driver.quit();
-        log.infoEnd("管理员-登录-查看考试情况-已结束的考试");
-
-        //管理员-登录-发布考试结果及修改考生成绩
-        log.infoStart("管理员-登录-发布考试结果及修改考生成绩");
-        driver = myDriver.openBrowser(browser);driver.get(testURL);
-        PublishExamResultSuperTask.publishExamResult(supernamUserName,superUserPwd,authExamName,stuUsersEditScore,driver);
-        driver.quit();
-        log.infoEnd("管理员-登录-发布考试结果及修改考生成绩");
-
-        //老师-登录-给广联达汇款
-        log.infoStart("老师-登录-给广联达汇款");
-        driver = myDriver.openBrowser(browser);driver.get(testURL);
-        PayForGlodonInfo payForGlodonInfo = payForGlodonInfo();
-        SignUpPayTeaTask.payForGlodon(teaUserName,teaUserPwd,authExamName,payForGlodonInfo,driver);
-        driver.quit();
-        log.infoEnd("老师-登录-给广联达汇款");
-
-        //管理员-登录-确认收款
-        log.infoStart("管理员-登录-确认收款");
-        driver = myDriver.openBrowser(browser);driver.get(testURL);
-        PayLookSuperTask.sureGetPay(supernamUserName,superUserPwd,authExamName,driver);
-        driver.quit();
-        log.infoEnd("管理员-登录-确认收款");
-
-
-        //管理员-登录-证书颁发
-        log.infoStart("管理员-登录-证书颁发");
-        driver = myDriver.openBrowser(browser);driver.get(testURL);
-        Map<String,String> passStu = CertificateExamSuperTask.certificateExam(supernamUserName,superUserPwd,authExamName,driver);
-        driver.quit();
-        log.infoEnd("管理员-登录-证书颁发");
-
-        //学生-登录-我的证书
-        String certificateCode = null;
-        if(passStu != null){
-            for(Map.Entry<String,String> entry : passStu.entrySet()){
-                log.infoStart("学生:"+entry.getKey()+";查看我的证书");
-                driver = myDriver.openBrowser(browser);driver.get(testURL);
-                MyCertificateStuTask.lookMyCertificate(entry.getKey(),"123456",entry.getValue(),driver);
-                driver.quit();
-                log.infoEnd("学生:"+entry.getKey()+";查看我的证书");
-            }
-        }else{
-            log.info("没有考试合格的考生");
-        }
-
-        log.infoEnd("冒烟测试-统招线下（新建考试-审核通过-报名-确认缴费-参加考试-发布成绩-给广联达汇款-颁发证书-查看证书）");
+       log.infoEnd("冒烟测试-统招线下（新建考试-审核通过-报名-确认缴费-退费-无法参考）");
 
     }
 
@@ -243,7 +148,7 @@ public class entranExamPassUnderlineCase implements WebDriverHost {
     private AuthExam authExamInfo(){
         AuthExam authExam = new AuthExam();
         authExam.setExamType("统招线下");
-        authExam.setExamName("统下自动化3-");
+        authExam.setExamName("统下自动化4-");
         authExam.setExamSubjectZy("土建");
         authExam.setStartTime(DateFormat.formatCalendar(DEFAULT_DATE_FORMAT,4));
         authExam.setEndTime(DateFormat.formatCalendar(DEFAULT_DATE_FORMAT,7));
@@ -286,16 +191,6 @@ public class entranExamPassUnderlineCase implements WebDriverHost {
         return signUpInfo;
     }
 
-    //封装给广联达汇款信息
-    private PayForGlodonInfo payForGlodonInfo(){
-        PayForGlodonInfo payForGlodonInfo = new PayForGlodonInfo();
-        payForGlodonInfo.setPayName("李老师");
-        payForGlodonInfo.setPayCompany("山东大学");
-        payForGlodonInfo.setPayId("1002354");
-        payForGlodonInfo.setPayTime("2017-06-13 14:20:00");
-        payForGlodonInfo.setPayImage("E:\\psb.jpg");
-        return payForGlodonInfo;
-    }
 
     @AfterMethod
     public void clearTestData(){
@@ -303,7 +198,6 @@ public class entranExamPassUnderlineCase implements WebDriverHost {
         teaUserName = null;teaUserPwd=null;
         supernamUserName = null ;superUserPwd = null;
         stuUsers.clear();
-        stuUsersEditScore.clear();
         stuUsersNew.clear();
     }
 }

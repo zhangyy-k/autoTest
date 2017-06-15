@@ -93,12 +93,14 @@ public class entranExamNoPayOnlineCase implements WebDriverHost {
         log.infoStart("老师-登录-发布认证考试-start");
         driver = myDriver.openBrowser(browser);driver.get(testURL);
         AddAuthExamTeaTask.publishAuthExam(teaUserName,teaUserPwd,authExam,driver);
+        driver.quit();
         log.infoEnd("老师-登录-发布认证考试");
 
         //管理员-登录-审核认证考试-通过
         log.infoStart("管理员-登录-审核认证考试-通过-start");
         driver = myDriver.openBrowser(browser);driver.get(testURL);
         AuthExamLookSuperTask.passAuthExam(supernamUserName,superUserPwd,authExamName,driver);
+        driver.quit();
         log.infoEnd("管理员-登录-审核认证考试-通过");
 
 
@@ -111,6 +113,7 @@ public class entranExamNoPayOnlineCase implements WebDriverHost {
                 driver.get(testURL);
                 SignUpInfo signUpInfo = signUpInfo();
                 SignUpStuTask.signUpOnlinePay(entry.getKey(), entry.getValue(), authExamName,signUpInfo, driver);
+                driver.quit();
 
                 //初始化 学生新账号Map集合中 学生账号
                 stuUsersNew.put(signUpInfo.getMobil(),"123456");
@@ -128,6 +131,7 @@ public class entranExamNoPayOnlineCase implements WebDriverHost {
                 log.infoStart("学生:"+entry.getKey()+";考试系统查看是否有该考试："+authExamName);
                 driver = myDriver.openBrowser("authBrowserWin7");
                 AuthExamStuTask.authExamIsDisplay(entry.getKey(),entry.getValue(),authExamName,driver);
+                driver.quit();
                 log.infoEnd("学生:"+entry.getKey()+";考试系统查看是否有该考试："+authExamName);
             }
         }else{

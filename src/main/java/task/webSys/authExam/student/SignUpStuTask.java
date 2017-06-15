@@ -46,7 +46,6 @@ public class SignUpStuTask {
         boolean b = MyActions.isDisplayed(AuthExamSignUpStuObject.paySucess,driver);
         log.info("学生:"+stuUserMobil+"-报名缴费成功提示是否跳转："+String.valueOf(b));
         MyAssert.assertTrue(b);
-        driver.quit();
     }
 
     /**
@@ -76,9 +75,6 @@ public class SignUpStuTask {
             log.info("学生:"+stuUserMobil+"报名;线下缴费付款方式:"+entry.getKey()+"显示是否正确："+String.valueOf(b));
             MyAssert.assertTrue(b);
         }
-
-
-        driver.quit();
     }
 
     /**

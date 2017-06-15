@@ -85,8 +85,6 @@ public class PublishExamResultSuperTask {
             log.info("考生："+stuMobil+"；考试成绩为："+stuScore+"；考试级别为："+stuLevel);
             MyAssert.assertEquals(stuLevel,"基础级");
         }
-
-        driver.quit();
     }
 
     /**

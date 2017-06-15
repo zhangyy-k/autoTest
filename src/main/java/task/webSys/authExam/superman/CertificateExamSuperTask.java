@@ -70,7 +70,6 @@ public class CertificateExamSuperTask {
 //            log.info("该场考试没有合格的考生！");
 //        }
 
-        driver.quit();
         return certificodes;
     }
 }
