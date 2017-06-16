@@ -87,7 +87,7 @@ public class entranExamNoPayOnlineCase implements WebDriverHost {
     @Description("冒烟测试-统招线上（新建考试-审核通过-报名-未缴费）")
     @Parameters({"browser"})
     public void entranExamNoPayOnlineTest(String browser) throws MalformedURLException,InterruptedException{
-        log.infoStart("冒然测试-统招线上类考试（新建考试-审核通过-报名-未缴费）");
+        log.infoStart("冒烟测试-统招线上类考试（新建考试-审核通过-报名-未缴费）");
 
         //老师-登录-发布认证考试
         log.infoStart("老师-登录-发布认证考试-start");
@@ -138,7 +138,7 @@ public class entranExamNoPayOnlineCase implements WebDriverHost {
             log.info("学生账号集合为空");
         }
 
-        log.infoEnd("冒然测试-统招线上类考试（新建考试-审核通过-报名-未缴费）");
+        log.infoEnd("冒烟测试-统招线上类考试（新建考试-审核通过-报名-未缴费）");
 
     }
 

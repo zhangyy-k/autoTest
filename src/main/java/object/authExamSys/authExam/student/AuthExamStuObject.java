@@ -27,6 +27,21 @@ public class AuthExamStuObject {
     //倒计时页面  开始考试  按钮
     public static By examStartButton = By.id("btn1");
 
+    //试卷名称
+    public static By paperName = By.xpath(".//*[@id='question_view_1_1']/div/div/div/div[1]/lable");
+    //考试页面 附件列表
+    public static By attachmentTRows =By.xpath(".//*[@id='question_view_1_1']/div/div/div/div[2]/dl/dd");
+    //根据附件列表 index 获取a标签
+    public static By attachmentButton(int index){
+        return By.xpath(".//*[@id='question_view_1_1']/div/div/div/div[2]/dl/dd["+index+"]/p/a");
+    }
+    //附件下载 提示框
+    public static By downLoadDailog = By.id("alertTitle1");
+    //提示框 确定 按钮
+    public static By downLoadDailog_ok_button = By.xpath(".//*[contanis(text(),'确定')]");
+    //获取附件下载地址
+    public static By downLoadURL = By.xpath(".//*[@id='alertMessage']/textarea");
+
     //退出考试 按钮
     public static By exitExamButton = By.xpath(".//body/nav/div/div[2]/button[1]");
     //保存

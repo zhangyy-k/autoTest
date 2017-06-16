@@ -191,9 +191,13 @@ public class MyActions extends MyDriver {
     }
 
     /**
-     * 鼠标
+     * 鼠标移动
      *@Author zhangyy
      *@Date 2017-6-13 18:57
      */
+    public static void mouseRemove(WebElement element,WebDriver driver){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).perform();
+    }
 
 }

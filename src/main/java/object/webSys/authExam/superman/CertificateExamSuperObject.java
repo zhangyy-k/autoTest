@@ -32,6 +32,10 @@ public class CertificateExamSuperObject {
     public static By noPassStuDataText = By.xpath(".//*[contains(text(),'未找到结果')]");
     //考生详情列表行数
     public static By passStuTRCounts = By.xpath(".//*[@id='passExamUserList']/table/tbody/tr");
+    //获取 考生详情列表 某行姓名
+    public static By getPassStrTRName(int index) {
+        return By.xpath(".//*[@id='passExamUserList']/table/tbody/tr["+index+"]/td[2]");
+    }
     //获取 考生详情列表 某行手机号
     public static By getPassStrTRMobil(int index) {
         return By.xpath(".//*[@id='passExamUserList']/table/tbody/tr["+index+"]/td[3]");

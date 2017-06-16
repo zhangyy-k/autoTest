@@ -204,7 +204,7 @@ public class SignUpPayTeaTask {
         Thread.sleep(1000);
         MyActions.click(SignUpPayTeaObject.forGlodonFormTab,driver);
         //根据考试名称 获取 已支付 是否存在
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         String payedText = MyActions.getText(SignUpPayTeaObject.getPayedText(authExamName),driver);
         log.info("已支付是否为："+payedText);
         MyAssert.assertEquals(payedText,"已支付");

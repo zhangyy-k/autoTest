@@ -82,7 +82,7 @@ public class entranExamUnderlineReturnPayCase implements WebDriverHost {
     @Test
     @Description("冒烟测试-统招线下（新建考试-审核通过-报名-确认缴费-退费-无法参考）")
     @Parameters({"browser"})
-    public void entranExamPassOnlineTest(String browser) throws MalformedURLException,InterruptedException{
+    public void entranExamUnderlineReturnPayTest(String browser) throws MalformedURLException,InterruptedException{
         log.infoStart("冒烟测试-统招线下（新建考试-审核通过-报名-确认缴费-退费-无法参考）");
         log.info("当前浏览器为："+browser);
 

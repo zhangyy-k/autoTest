@@ -58,11 +58,40 @@ public class AuthExamStuTask {
         }else
             log.info("考试已经开始");
 
+        //附件下载
+
         //交卷
         handExam(stuUserMobil,driver);
         //检验 已经交卷
         Thread.sleep(5000);
         isHandExam_Y(stuUserMobil,authExamName,driver);
+    }
+
+    /**
+     * 考试详情页面  附件下载
+     *@Author zhangyy
+     *@Date 2017-6-16 16:49
+     */
+    public static void attachementDownLoad(WebDriver driver) throws InterruptedException{
+        List<WebElement> attachementRows = MyFind.findElements(AuthExamStuObject.attachmentTRows,driver);
+        int attaementCouts = attachementRows.size();
+        log.info("考试页面附件个数为："+attaementCouts);
+        for(int i = 1;i < attaementCouts + 1;i++){
+            //获取附件按钮 点击
+            MyActions.click(AuthExamStuObject.attachmentButton(i),driver);
+            //
+            Thread.sleep(5000);
+            boolean b = MyActions.isDisplayed(AuthExamStuObject.downLoadDailog,driver);
+            log.info("附件下载提示对话框是否存在："+b);
+            Thread.sleep(5000);
+            //获取下载地址
+            String downLoadURL = MyActions.getText(AuthExamStuObject.downLoadURL,driver);
+            log.info("附件的下载地址为："+downLoadURL);
+
+//            MyActions.click(AuthExamStuObject.downLoadDailog_ok_button,driver);
+            Thread.sleep(5000);
+
+        }
     }
 
     /**

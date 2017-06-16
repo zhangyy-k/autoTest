@@ -110,6 +110,7 @@ public class AddAuthExamTeaTask {
         Thread.sleep(1000);
         MyActions.click(AddAuthExamTeaObject.submitButton, driver);
         //判断提交成功的提示框 是否存在
+        Thread.sleep(1000);
         boolean b = MyActions.isDisplayed(AddAuthExamTeaObject.submitDailog,driver);
         log.info("老师-新建认证考试-提交成功提示框是否显示："+String.valueOf(b));
         MyAssert.assertTrue(b);

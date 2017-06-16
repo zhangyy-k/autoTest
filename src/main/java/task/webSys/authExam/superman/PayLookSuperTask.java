@@ -37,6 +37,7 @@ public class PayLookSuperTask {
         //输入 管理员登录密码
         MyActions.sendText(PayLookSuperObject.upwdText,password,driver);
         //点击 确定按钮
+        Thread.sleep(1000);
         MyActions.click(PayLookSuperObject.sureGetPayDailog_yes_button,driver);
 
         //判断 收款成功 提示框 是否存在

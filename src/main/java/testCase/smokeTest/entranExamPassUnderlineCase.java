@@ -95,7 +95,7 @@ public class entranExamPassUnderlineCase implements WebDriverHost {
     @Test
     @Description("冒烟测试-统招线下（新建考试-审核通过-报名-确认缴费-参加考试-发布成绩-给广联达汇款-颁发证书-查看证书）")
     @Parameters({"browser"})
-    public void entranExamPassOnlineTest(String browser) throws MalformedURLException,InterruptedException{
+    public void entranExamPassUnderlineTest(String browser) throws MalformedURLException,InterruptedException{
         log.infoStart("冒烟测试-统招线下（新建考试-审核通过-报名-确认缴费-参加考试-发布成绩-给广联达汇款-颁发证书-查看证书）");
         log.info("当前浏览器为："+browser);
 
@@ -217,19 +217,32 @@ public class entranExamPassUnderlineCase implements WebDriverHost {
         //管理员-登录-证书颁发
         log.infoStart("管理员-登录-证书颁发");
         driver = myDriver.openBrowser(browser);driver.get(testURL);
-        Map<String,String> passStu = CertificateExamSuperTask.certificateExam(supernamUserName,superUserPwd,authExamName,driver);
+        List<Map<String,String>> passStu = CertificateExamSuperTask.certificateExam(supernamUserName,superUserPwd,authExamName,driver);
         driver.quit();
         log.infoEnd("管理员-登录-证书颁发");
 
         //学生-登录-我的证书
-        String certificateCode = null;
-        if(passStu != null){
-            for(Map.Entry<String,String> entry : passStu.entrySet()){
-                log.infoStart("学生:"+entry.getKey()+";查看我的证书");
+        int passStuCounts = passStu.size();
+        log.info("获取证书的学生人数为："+passStuCounts);
+        if(passStuCounts == 0){
+            for(Map<String,String> m :passStu){
+                String stuName = m.get("姓名");
+                String stuMobil = m.get("手机号");
+                String stuCertificateCode = m.get("证书编号");
+
+                //学生-测试认证-证书查询
+                log.infoStart("学生:" + stuName + "；测试认证-证书查询");
                 driver = myDriver.openBrowser(browser);driver.get(testURL);
-                MyCertificateStuTask.lookMyCertificate(entry.getKey(),"123456",entry.getValue(),driver);
+                MyCertificateStuTask.searcheMyCertificate("372321198811046329", stuCertificateCode, driver);
                 driver.quit();
-                log.infoEnd("学生:"+entry.getKey()+";查看我的证书");
+                log.infoEnd("学生:" + stuName + "；测试认证-证书查询");
+
+                //学生-登录-查看我的证书
+                log.infoStart("学生:" + stuMobil + "；登录个人中心，查看我的证书");
+                driver = myDriver.openBrowser(browser);driver.get(testURL);
+                MyCertificateStuTask.lookMyCertificate(stuMobil, "123456", stuCertificateCode, driver);
+                driver.quit();
+                log.infoEnd("学生:" + stuMobil + "；登录个人中心，查看我的证书");
             }
         }else{
             log.info("没有考试合格的考生");
