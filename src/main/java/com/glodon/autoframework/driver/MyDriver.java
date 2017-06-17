@@ -40,34 +40,67 @@ public class MyDriver {
     //根据浏览器类型返回 Webdriver对象
     public WebDriver openBrowser(String browser) throws MalformedURLException {
         WebDriver driver = null;
+        driver = setWebBrowser(browser);
 
-        if (browser.equals("chrome")) {
-            log.info("nodeChromeURL:"+nodeChromeURL);
-            DesiredCapabilities dc = DesiredCapabilities.chrome();
-            driver = setWebBrowser(nodeChromeURL,dc);
-        } else if (browser.equals("ie")) {
-            log.info("nodeIEURL:"+nodeIEURL);
-            DesiredCapabilities dc =DesiredCapabilities.internetExplorer();
-            driver = setWebBrowser(nodeIEURL,dc);
-        } else if (browser.equals("firefox")) {
-            log.info("nodeFireFoxURL:"+nodeFireFoxURL);
-            DesiredCapabilities dc =DesiredCapabilities.firefox();
-            driver = setWebBrowser(nodeFireFoxURL,dc);
-        } else if(browser.equals("authBrowserWin7")){
-            log.info("authBrowserWin7:"+authBrowserWin7);
-            driver = setAuthBrowser(authBrowserWin7);
-        }else if(browser.equals("authBrowserWin8")){
-            log.info("authBrowserWin8:"+authBrowserWin8);
-            driver = setAuthBrowser(authBrowserWin8);
-        }  else if(browser.equals("authBrowserXP")){
-            log.info("authBrowserXP:"+authBrowserXP);
-            driver = setAuthBrowser(authBrowserXP);
-        } else {
-            log.error("你传入的浏览器名有误为：" + browser);
-        }
+//        if (browser.equals("chrome")) {
+//            log.info("nodeChromeURL:"+nodeChromeURL);
+//            DesiredCapabilities dc = DesiredCapabilities.chrome();
+//            driver = setWebBrowser(nodeChromeURL,dc);
+//        } else if (browser.equals("ie")) {
+//            log.info("nodeIEURL:"+nodeIEURL);
+//            DesiredCapabilities dc =DesiredCapabilities.internetExplorer();
+//            driver = setWebBrowser(nodeIEURL,dc);
+//        } else if (browser.equals("firefox")) {
+//            log.info("nodeFireFoxURL:"+nodeFireFoxURL);
+//            DesiredCapabilities dc =DesiredCapabilities.firefox();
+//            driver = setWebBrowser(nodeFireFoxURL,dc);
+//        } else if(browser.equals("authBrowserWin7")){
+//            log.info("authBrowserWin7:"+authBrowserWin7);
+//            driver = setAuthBrowser(authBrowserWin7);
+//        }else if(browser.equals("authBrowserWin8")){
+//            log.info("authBrowserWin8:"+authBrowserWin8);
+//            driver = setAuthBrowser(authBrowserWin8);
+//        }  else if(browser.equals("authBrowserXP")){
+//            log.info("authBrowserXP:"+authBrowserXP);
+//            driver = setAuthBrowser(authBrowserXP);
+//        } else {
+//            log.error("你传入的浏览器名有误为：" + browser);
+//        }
         return driver;
     }
 
+    //设置web浏览器
+    private WebDriver setWebBrowser(String browser){
+        WebDriver driver = null;
+        try {
+            switch (browser) {
+                case "chrome":
+                    System.setProperty("webdriver.chrome.driver", ".\\drivers\\chromedriver.exe");
+                    driver = new ChromeDriver();
+                    break;
+                case "firefox":
+                    driver = new FirefoxDriver();
+                    break;
+                case "ie":
+                    System.setProperty("webdriver.ie.driver", ".\\drivers\\IEDriverServer.exe");
+                    driver = new InternetExplorerDriver();
+                    break;
+                case "authBrowser":
+                    System.setProperty("webdriver.chrome.driver", ".\\drivers\\chromedriver.exe");
+                    //设置专用浏览器exe路径
+                    String browser_url = "C:\\Program Files (x86)\\GrandSoft\\GCS_RZ\\3.1\\NWjs\\ksxt.exe";
+                    ChromeOptions options = new ChromeOptions();
+                    options.setBinary(browser_url);
+                    driver = new ChromeDriver(options);
+                    break;
+            }
+            driver.manage().window().maximize();
+        }catch (Exception e){
+            log.error("设置web端浏览器兼容性错误");
+            e.printStackTrace();
+        }
+        return driver;
+    }
 
     //设置web端浏览器 兼容性
     private WebDriver setWebBrowser(String browserNode,DesiredCapabilities dc) throws MalformedURLException{

@@ -91,8 +91,8 @@ public class entranExamPassOnlineCase implements WebDriverHost {
 
     @Test
     @Description("冒烟测试-统招线上（新建考试-审核通过-报名-缴费-参加考试-发布成绩-颁发证书-查看证书）")
-    @Parameters({"browser"})
-    public void entranExamPassOnlineTest(String browser) throws MalformedURLException,InterruptedException{
+    @Parameters({"browser","authBrowser"})
+    public void entranExamPassOnlineTest(String browser,String authBrowser) throws MalformedURLException,InterruptedException{
         log.infoStart("冒烟测试-统招线上类考试（新建考试-审核通过-报名-缴费-参加考试-发布成绩-颁发证书-查看证书）");
         log.info("当前浏览器为："+browser);
 
@@ -151,7 +151,7 @@ public class entranExamPassOnlineCase implements WebDriverHost {
         if(stuUsersNew != null){
             for(Map.Entry<String,String> entry : stuUsersNew.entrySet()){
                 log.infoStart("学生:"+entry.getKey()+";登录考试系统开始考试");
-                driver = myDriver.openBrowser("authBrowserWin7");
+                driver = myDriver.openBrowser("authBrowser");
                 AuthExamStuTask.enterAuthExam(entry.getKey(), entry.getValue(),authExamName,driver);
                 driver.quit();
                 log.infoEnd("学生:"+entry.getKey()+";登录考试系统开始考试");

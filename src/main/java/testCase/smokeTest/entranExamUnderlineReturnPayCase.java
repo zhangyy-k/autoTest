@@ -81,8 +81,8 @@ public class entranExamUnderlineReturnPayCase implements WebDriverHost {
 
     @Test
     @Description("冒烟测试-统招线下（新建考试-审核通过-报名-确认缴费-退费-无法参考）")
-    @Parameters({"browser"})
-    public void entranExamUnderlineReturnPayTest(String browser) throws MalformedURLException,InterruptedException{
+    @Parameters({"browser","authBrowser"})
+    public void entranExamUnderlineReturnPayTest(String browser,String authBrowser) throws MalformedURLException,InterruptedException{
         log.infoStart("冒烟测试-统招线下（新建考试-审核通过-报名-确认缴费-退费-无法参考）");
         log.info("当前浏览器为："+browser);
 
@@ -131,7 +131,7 @@ public class entranExamUnderlineReturnPayCase implements WebDriverHost {
         if(stuUsersNew != null){
             for(Map.Entry<String,String> entry : stuUsersNew.entrySet()){
                 log.infoStart("学生:"+entry.getKey()+";考试系统查看是否有该考试："+authExamName);
-                driver = myDriver.openBrowser("authBrowserWin7");
+                driver = myDriver.openBrowser("authBrowser");
                 AuthExamStuTask.authExamIsDisplay(entry.getKey(),entry.getValue(),authExamName,driver);
                 driver.quit();
                 log.infoEnd("学生:"+entry.getKey()+";考试系统查看是否有该考试："+authExamName);

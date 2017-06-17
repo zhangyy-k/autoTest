@@ -85,8 +85,8 @@ public class entranExamNoPayOnlineCase implements WebDriverHost {
 
     @Test
     @Description("冒烟测试-统招线上（新建考试-审核通过-报名-未缴费）")
-    @Parameters({"browser"})
-    public void entranExamNoPayOnlineTest(String browser) throws MalformedURLException,InterruptedException{
+    @Parameters({"browser","authBrowser"})
+    public void entranExamNoPayOnlineTest(String browser,String authBrowser) throws MalformedURLException,InterruptedException{
         log.infoStart("冒烟测试-统招线上类考试（新建考试-审核通过-报名-未缴费）");
 
         //老师-登录-发布认证考试
@@ -129,7 +129,7 @@ public class entranExamNoPayOnlineCase implements WebDriverHost {
         if(stuUsersNew != null){
             for(Map.Entry<String,String> entry : stuUsersNew.entrySet()){
                 log.infoStart("学生:"+entry.getKey()+";考试系统查看是否有该考试："+authExamName);
-                driver = myDriver.openBrowser("authBrowserWin7");
+                driver = myDriver.openBrowser(authBrowser);
                 AuthExamStuTask.authExamIsDisplay(entry.getKey(),entry.getValue(),authExamName,driver);
                 driver.quit();
                 log.infoEnd("学生:"+entry.getKey()+";考试系统查看是否有该考试："+authExamName);
