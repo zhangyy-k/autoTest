@@ -54,7 +54,7 @@ public class MyDriver {
 //            log.info("nodeFireFoxURL:"+nodeFireFoxURL);
 //            DesiredCapabilities dc =DesiredCapabilities.firefox();
 //            driver = setWebBrowser(nodeFireFoxURL,dc);
-//        } else if(browser.equals("authBrowserWin7")){
+//        } else if(browser.equals("authBrowser")){
 //            log.info("authBrowserWin7:"+authBrowserWin7);
 //            driver = setAuthBrowser(authBrowserWin7);
 //        }else if(browser.equals("authBrowserWin8")){
@@ -77,13 +77,16 @@ public class MyDriver {
                 case "chrome":
                     System.setProperty("webdriver.chrome.driver", ".\\drivers\\chromedriver.exe");
                     driver = new ChromeDriver();
+                    driver.manage().window().maximize();
                     break;
                 case "firefox":
                     driver = new FirefoxDriver();
+                    driver.manage().window().maximize();
                     break;
                 case "ie":
                     System.setProperty("webdriver.ie.driver", ".\\drivers\\IEDriverServer.exe");
                     driver = new InternetExplorerDriver();
+                    driver.manage().window().maximize();
                     break;
                 case "authBrowser":
                     System.setProperty("webdriver.chrome.driver", ".\\drivers\\chromedriver.exe");
@@ -94,7 +97,7 @@ public class MyDriver {
                     driver = new ChromeDriver(options);
                     break;
             }
-            driver.manage().window().maximize();
+
         }catch (Exception e){
             log.error("设置web端浏览器兼容性错误");
             e.printStackTrace();

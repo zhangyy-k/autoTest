@@ -21,10 +21,10 @@ public class AuthExamLoginTask {
      * @param driver 当前打开的浏览器对象
      */
     public static void authExamLogin(String userName,String passWord, WebDriver driver) throws InterruptedException{
-        Thread.sleep(5000);
+        Thread.sleep(8000);
         //点击 登录页面  提示框
         MyActions.click(AuthExamLoginObject.loginDialog,driver);
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         //输入用户名
         MyActions.sendText(AuthExamLoginObject.userNameText,userName,driver);
         //输入密码
