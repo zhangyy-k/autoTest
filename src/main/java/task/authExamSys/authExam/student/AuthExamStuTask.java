@@ -61,6 +61,7 @@ public class AuthExamStuTask {
         //附件下载
 
         //交卷
+        Thread.sleep(5000);
         handExam(stuUserMobil,driver);
         //检验 已经交卷
         Thread.sleep(5000);

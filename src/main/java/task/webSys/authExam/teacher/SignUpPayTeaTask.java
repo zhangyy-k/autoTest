@@ -199,6 +199,7 @@ public class SignUpPayTeaTask {
         //控制权移交
         MyActions.toWindow(driver);
         //刷新页面
+        Thread.sleep(3000);
         MyActions.refresh(driver);
         //点击 需给广联达汇款的考试 tab页
         Thread.sleep(1000);
