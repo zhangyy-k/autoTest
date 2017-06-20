@@ -9,14 +9,14 @@
             <class name="testCase.smokeTest.entranExamNoPayOnlineCase"></class>
         </classes>
     </test>
-    <test name="统招线上-冒然场景测试-firefox">
-        <parameter name="browser" value="firefox"/>
-        <parameter name="authBrowser" value="authBrowser"/>
-        <classes>
-            <class name="testCase.smokeTest.entranExamPassOnlineCase"></class>
-            <class name="testCase.smokeTest.entranExamNoPayOnlineCase"></class>
-        </classes>
-    </test>
+    <!--<test name="统招线上-冒然场景测试-firefox">-->
+        <!--<parameter name="browser" value="firefox"/>-->
+        <!--<parameter name="authBrowser" value="authBrowser"/>-->
+        <!--<classes>-->
+            <!--<class name="testCase.smokeTest.entranExamPassOnlineCase"></class>-->
+            <!--<class name="testCase.smokeTest.entranExamNoPayOnlineCase"></class>-->
+        <!--</classes>-->
+    <!--</test>-->
     <!--<test name="统招线上-冒然场景测试-ie">-->
         <!--<parameter name="browser" value="ie"/>-->
         <!--<classes>-->
@@ -24,21 +24,21 @@
             <!--<class name="testCase.smokeTest.entranExamNoPayOnlineCase"></class>-->
         <!--</classes>-->
     <!--</test>-->
-    <test name="统招线下-冒然场景测试-chrome">
-        <parameter name="browser" value="chrome"/>
-        <parameter name="authBrowser" value="authBrowser"/>
-        <classes>
-            <class name="testCase.smokeTest.entranExamPassUnderlineCase"></class>
-            <class name="testCase.smokeTest.entranExamUnderlineReturnPayCase"></class>
-        </classes>
-    </test>
-    <test name="统招线下-冒然场景测试-firefox">
-        <parameter name="browser" value="firefox"/>
-        <parameter name="authBrowser" value="authBrowser"/>
-        <classes>
-            <class name="testCase.smokeTest.entranExamPassUnderlineCase"></class>
-            <class name="testCase.smokeTest.entranExamUnderlineReturnPayCase"></class>
-        </classes>
-    </test>
+    <!--<test name="统招线下-冒然场景测试-chrome">-->
+        <!--<parameter name="browser" value="chrome"/>-->
+        <!--<parameter name="authBrowser" value="authBrowser"/>-->
+        <!--<classes>-->
+            <!--<class name="testCase.smokeTest.entranExamPassUnderlineCase"></class>-->
+            <!--<class name="testCase.smokeTest.entranExamUnderlineReturnPayCase"></class>-->
+        <!--</classes>-->
+    <!--</test>-->
+    <!--<test name="统招线下-冒然场景测试-firefox">-->
+        <!--<parameter name="browser" value="firefox"/>-->
+        <!--<parameter name="authBrowser" value="authBrowser"/>-->
+        <!--<classes>-->
+            <!--<class name="testCase.smokeTest.entranExamPassUnderlineCase"></class>-->
+            <!--<class name="testCase.smokeTest.entranExamUnderlineReturnPayCase"></class>-->
+        <!--</classes>-->
+    <!--</test>-->
 </suite>
 
