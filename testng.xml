@@ -3,6 +3,7 @@
 <suite name="认证产品自动化测试">
     <test name="统招线上-冒然场景测试-ie">
         <parameter name="browser" value="ie"/>
+        <parameter name="authBrowser" value="authBrowser"/>
         <classes>
             <class name="testCase.smokeTest.entranExamPassOnlineCase"></class>
             <class name="testCase.smokeTest.entranExamNoPayOnlineCase"></class>
