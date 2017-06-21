@@ -108,8 +108,8 @@
                                 com.glodon.autoframework.testng.TestResultListener,
                                 com.glodon.autoframework.testng.RetryListener,
                                 com.glodon.autoframework.testng.AllureReporterListener
-                                org.uncommons.reportng.JUnitXMLReporter
-                                org.uncommons.reportng.HTMLReporter
+                                <!--org.uncommons.reportng.JUnitXMLReporter-->
+                                <!--org.uncommons.reportng.HTMLReporter-->
                             </value>
                         </property>
                     </properties>
