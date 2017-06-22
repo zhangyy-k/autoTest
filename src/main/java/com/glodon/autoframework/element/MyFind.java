@@ -23,7 +23,7 @@ public class MyFind extends MyDriver {
     public static WebElement findElement(final By by, WebDriver driver) throws TimeoutException {
         WebElement webElement = null;
         try {
-            webElement = new WebDriverWait(driver, 10).until(new ExpectedCondition<WebElement>() {
+            webElement = new WebDriverWait(driver, 30).until(new ExpectedCondition<WebElement>() {
                 public WebElement apply(WebDriver driver) {
                     return driver.findElement(by);
                 }
@@ -44,7 +44,7 @@ public class MyFind extends MyDriver {
     public static List<WebElement> findElements(final By by, WebDriver driver) {
         List<WebElement> webElement = null;
         try {
-            webElement = new WebDriverWait(driver, 10).until(new ExpectedCondition<List<WebElement>>() {
+            webElement = new WebDriverWait(driver, 30).until(new ExpectedCondition<List<WebElement>>() {
                 public List<WebElement> apply(WebDriver driver) {
                     return driver.findElements(by);
                 }
