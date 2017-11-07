@@ -9,6 +9,9 @@ import org.openqa.selenium.By;
  */
 public class AuthExamLoginObject {
 
+    //断网提示
+    public  static  By netTrip = By.className("btn");
+
     //登录页面提示框，是，登录系统
 //    public static By loginDialog = By.xpath(".//*[contains(text(),'是，登录系统')]");
     public static By loginDialog = By.xpath(".//*[@id='administratorAlertModal']/div/div/div[3]/button[2]");
