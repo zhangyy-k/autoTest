@@ -107,9 +107,8 @@
                             <value>
                                 com.glodon.autoframework.testng.TestResultListener,
                                 com.glodon.autoframework.testng.RetryListener,
-                                com.glodon.autoframework.testng.AllureReporterListener
-                                <!--org.uncommons.reportng.JUnitXMLReporter-->
-                                <!--org.uncommons.reportng.HTMLReporter-->
+                                com.glodon.autoframework.testng.AllureReporterListener,
+                                org.testng.IReporter
                             </value>
                         </property>
                     </properties>

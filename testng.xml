@@ -14,7 +14,7 @@
         <parameter name="authBrowser" value="authBrowser"/>
         <classes>
             <class name="testCase.smokeTest.entranExamPassOnlineCase"></class>
-            <class name="testCase.smokeTest.entranExamNoPayOnlineCase"></class>
+            <!--<class name="testCase.smokeTest.entranExamNoPayOnlineCase"></class>-->
         </classes>
     </test>
     <!--<test name="统招线上-冒然场景测试-firefox">-->
