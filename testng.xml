@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="认证产品自动化测试">
+<suite name="认证产品自动化测试" parallel="tests" thread-count="2">
     <!--<test name="统招线上-冒然场景测试-ie">-->
         <!--<parameter name="browser" value="ie"/>-->
         <!--<parameter name="authBrowser" value="authBrowser"/>-->
@@ -17,14 +17,14 @@
             <class name="testCase.smokeTest.entranExamNoPayOnlineCase"></class>
         </classes>
     </test>
-    <!--<test name="统招线上-冒然场景测试-firefox">-->
-        <!--<parameter name="browser" value="firefox"/>-->
-        <!--<parameter name="authBrowser" value="authBrowser"/>-->
-        <!--<classes>-->
+    <test name="统招线上-冒然场景测试-firefox">
+        <parameter name="browser" value="firefox"/>
+        <parameter name="authBrowser" value="authBrowser"/>
+        <classes>
             <!--<class name="testCase.smokeTest.entranExamPassOnlineCase"></class>-->
-            <!--<class name="testCase.smokeTest.entranExamNoPayOnlineCase"></class>-->
-        <!--</classes>-->
-    <!--</test>-->
+            <class name="testCase.smokeTest.entranExamNoPayOnlineCase"></class>
+        </classes>
+    </test>
 
     <!--<test name="统招线下-冒然场景测试-chrome">-->
         <!--<parameter name="browser" value="chrome"/>-->

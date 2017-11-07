@@ -12343,3 +12343,121 @@
 2017-11-07 15:06:36,205 INFO main [testCase.smokeTest.entranExamPassOnlineCase]info(line:46)在By.id: username输入15100383699
 2017-11-07 15:06:36,380 INFO main [testCase.smokeTest.entranExamPassOnlineCase]info(line:46)在By.id: password输入123456
 2017-11-07 15:06:36,520 INFO main [testCase.smokeTest.entranExamPassOnlineCase]info(line:46)在By.id: vcode输入123
+2017-11-07 16:07:02,550 INFO main [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)测试地址为：http://testper-center.glodonedu.com
+2017-11-07 16:07:02,704 INFO main [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)测试地址为：http://testper-center.glodonedu.com
+2017-11-07 16:07:02,893 INFO main [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)1510042022893
+2017-11-07 16:07:02,893 INFO main [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)2017-11-07 16:10:02
+2017-11-07 16:07:02,893 INFO main [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)1510042022893
+2017-11-07 16:07:02,894 INFO main [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)2017-11-07 16:13:02
+2017-11-07 16:07:02,894 INFO main [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)1510042022894
+2017-11-07 16:07:02,984 INFO main [testCase.smokeTest.entranExamNoPayOnlineCase]infoStart(line:50)…………………………………………………冒烟测试-统招线上类考试（新建考试-审核通过-报名-未缴费）-…………………………………………………………………………start
+2017-11-07 16:07:02,984 INFO main [testCase.smokeTest.entranExamNoPayOnlineCase]infoStart(line:50)…………………………………………………老师-登录-发布认证考试-start-…………………………………………………………………………start
+2017-11-07 16:07:02,984 INFO main [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)nodeChromeURL:http://172.16.231.45:8088/wd/hub
+2017-11-07 16:07:09,879 INFO main [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: userName输入131561996834
+2017-11-07 16:07:10,015 INFO main [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: password输入123456
+2017-11-07 16:07:10,206 INFO main [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: vcode输入123456
+2017-11-07 16:07:15,608 INFO main [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.xpath: .//*[@name='title']输入统上自动化2-1510042022894
+2017-11-07 16:07:16,083 INFO main [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: capacity输入60
+2017-11-07 16:07:16,243 INFO main [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.xpath: .//*[@name='address']输入济南广联达济南广联达
+2017-11-07 16:07:18,804 INFO main [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)老师-新建认证考试-提交成功提示框是否显示：true
+2017-11-07 16:07:20,676 INFO main [testCase.smokeTest.entranExamNoPayOnlineCase]infoEnd(line:54)…………………………………………………老师-登录-发布认证考试-………………………………………………………………………end
+2017-11-07 16:07:20,676 INFO main [testCase.smokeTest.entranExamNoPayOnlineCase]infoStart(line:50)…………………………………………………管理员-登录-审核认证考试-通过-start-…………………………………………………………………………start
+2017-11-07 16:07:20,676 INFO main [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)nodeChromeURL:http://172.16.231.45:8088/wd/hub
+2017-11-07 16:08:36,992 INFO main [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)测试地址为：http://testper-center.glodonedu.com
+2017-11-07 16:08:37,122 INFO main [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)测试地址为：http://testper-center.glodonedu.com
+2017-11-07 16:08:37,325 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)1510042117325
+2017-11-07 16:08:37,325 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)2017-11-07 16:11:37
+2017-11-07 16:08:37,335 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)1510042117335
+2017-11-07 16:08:37,335 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)2017-11-07 16:14:37
+2017-11-07 16:08:37,335 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)1510042117335
+2017-11-07 16:08:37,345 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)1510042117345
+2017-11-07 16:08:37,345 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)2017-11-07 16:11:37
+2017-11-07 16:08:37,345 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)1510042117345
+2017-11-07 16:08:37,345 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)2017-11-07 16:14:37
+2017-11-07 16:08:37,345 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)1510042117345
+2017-11-07 16:08:37,415 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]infoStart(line:50)…………………………………………………冒烟测试-统招线上类考试（新建考试-审核通过-报名-未缴费）-…………………………………………………………………………start
+2017-11-07 16:08:37,415 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]infoStart(line:50)…………………………………………………冒烟测试-统招线上类考试（新建考试-审核通过-报名-未缴费）-…………………………………………………………………………start
+2017-11-07 16:08:37,415 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]infoStart(line:50)…………………………………………………老师-登录-发布认证考试-start-…………………………………………………………………………start
+2017-11-07 16:08:37,415 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]infoStart(line:50)…………………………………………………老师-登录-发布认证考试-start-…………………………………………………………………………start
+2017-11-07 16:08:37,415 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)nodeFireFoxURL:http://172.16.231.45:8089/wd/hub
+2017-11-07 16:08:37,415 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)nodeChromeURL:http://172.16.231.45:8088/wd/hub
+2017-11-07 16:08:44,378 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: userName输入131561996834
+2017-11-07 16:08:44,532 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: password输入123456
+2017-11-07 16:08:44,694 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: vcode输入123456
+2017-11-07 16:08:50,485 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.xpath: .//*[@name='title']输入统上自动化2-1510042117345
+2017-11-07 16:08:51,031 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: capacity输入60
+2017-11-07 16:08:51,291 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.xpath: .//*[@name='address']输入济南广联达济南广联达
+2017-11-07 16:08:53,851 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)老师-新建认证考试-提交成功提示框是否显示：true
+2017-11-07 16:08:55,570 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]infoEnd(line:54)…………………………………………………老师-登录-发布认证考试-………………………………………………………………………end
+2017-11-07 16:08:55,570 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]infoStart(line:50)…………………………………………………管理员-登录-审核认证考试-通过-start-…………………………………………………………………………start
+2017-11-07 16:08:55,571 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)nodeChromeURL:http://172.16.231.45:8088/wd/hub
+2017-11-07 16:09:02,975 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: userName输入superman
+2017-11-07 16:09:03,132 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: password输入123456
+2017-11-07 16:09:03,302 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: vcode输入123456
+2017-11-07 16:09:11,241 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: userName输入131561996834
+2017-11-07 16:09:11,715 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)管理员-审核-认证考试-审核成功提示框是否显示：true
+2017-11-07 16:09:12,300 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: password输入123456
+2017-11-07 16:09:12,682 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: vcode输入123456
+2017-11-07 16:09:13,742 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]infoEnd(line:54)…………………………………………………管理员-登录-审核认证考试-通过-………………………………………………………………………end
+2017-11-07 16:09:13,743 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]infoStart(line:50)…………………………………………………学生:10000000001;报名缴费-start-…………………………………………………………………………start
+2017-11-07 16:09:13,743 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)nodeChromeURL:http://172.16.231.45:8088/wd/hub
+2017-11-07 16:09:19,516 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)Ie9
+2017-11-07 16:09:19,517 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)1510042159517
+2017-11-07 16:09:21,030 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: userName输入10000000001
+2017-11-07 16:09:21,336 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: password输入123456
+2017-11-07 16:09:21,581 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: vcode输入123456
+2017-11-07 16:09:26,055 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.xpath: .//*[@name='title']输入统上自动化2-1510042117335
+2017-11-07 16:09:27,161 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: capacity输入60
+2017-11-07 16:09:27,332 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.xpath: .//*[@name='address']输入济南广联达济南广联达
+2017-11-07 16:09:29,897 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)老师-新建认证考试-提交成功提示框是否显示：true
+2017-11-07 16:09:30,433 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: fullname输入学生Ie9
+2017-11-07 16:09:30,824 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: mobile输入15100421595
+2017-11-07 16:09:31,121 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: identityCard输入372321198811046329
+2017-11-07 16:09:31,475 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.name: company输入广联达
+2017-11-07 16:09:32,062 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)学生:15100421595报名照片提示框是否存在：true
+2017-11-07 16:09:33,918 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]infoEnd(line:54)…………………………………………………老师-登录-发布认证考试-………………………………………………………………………end
+2017-11-07 16:09:33,918 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]infoStart(line:50)…………………………………………………管理员-登录-审核认证考试-通过-start-…………………………………………………………………………start
+2017-11-07 16:09:33,918 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)nodeFireFoxURL:http://172.16.231.45:8089/wd/hub
+2017-11-07 16:09:35,038 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)学生:10000000001-报名缴费成功提示是否跳转：true
+2017-11-07 16:09:36,364 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)学生：10000000001报名手机为：15100421595
+2017-11-07 16:09:36,364 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]infoEnd(line:54)…………………………………………………学生:10000000001;-………………………………………………………………………end
+2017-11-07 16:09:36,364 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]infoStart(line:50)…………………………………………………学生:15100421595;考试系统查看是否有该考试：统上自动化2-1510042117345-…………………………………………………………………………start
+2017-11-07 16:09:36,364 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)authBrowserWin7:http://172.16.231.45:8089/wd/hub
+2017-11-07 16:09:50,763 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: username输入15100421595
+2017-11-07 16:09:51,413 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: password输入123456
+2017-11-07 16:09:51,649 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: vcode输入123
+2017-11-07 16:09:52,922 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: userName输入superman
+2017-11-07 16:09:53,928 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: password输入123456
+2017-11-07 16:09:54,062 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: vcode输入123456
+2017-11-07 16:10:01,216 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)管理员-审核-认证考试-审核成功提示框是否显示：true
+2017-11-07 16:10:04,348 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]infoEnd(line:54)…………………………………………………管理员-登录-审核认证考试-通过-………………………………………………………………………end
+2017-11-07 16:10:04,348 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]infoStart(line:50)…………………………………………………学生:10000000001;报名缴费-start-…………………………………………………………………………start
+2017-11-07 16:10:04,348 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)nodeFireFoxURL:http://172.16.231.45:8089/wd/hub
+2017-11-07 16:10:18,773 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)025
+2017-11-07 16:10:18,773 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)1510042218773
+2017-11-07 16:10:19,819 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: userName输入10000000001
+2017-11-07 16:10:20,316 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: password输入123456
+2017-11-07 16:10:20,424 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: vcode输入123456
+2017-11-07 16:10:23,133 ERROR TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]error(line:66)元素:By.xpath: .//*[contains(text(),'统上自动化2-1510042117345')]查找超时
+2017-11-07 16:10:23,133 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)元素:By.xpath: .//*[contains(text(),'统上自动化2-1510042117345')]不存在
+2017-11-07 16:10:23,133 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)学生：15100421595；登录考试-考试列表中是否存在该场考试：false
+2017-11-07 16:10:24,134 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]infoEnd(line:54)…………………………………………………学生:15100421595;考试系统查看是否有该考试：统上自动化2-1510042117345-………………………………………………………………………end
+2017-11-07 16:10:24,134 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]infoEnd(line:54)…………………………………………………冒烟测试-统招线上类考试（新建考试-审核通过-报名-未缴费）-………………………………………………………………………end
+2017-11-07 16:10:30,765 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: fullname输入学生025
+2017-11-07 16:10:31,042 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: mobile输入15100422187
+2017-11-07 16:10:31,181 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: identityCard输入372321198811046329
+2017-11-07 16:10:31,315 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.name: company输入广联达
+2017-11-07 16:10:31,631 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)学生:15100422187报名照片提示框是否存在：true
+2017-11-07 16:10:34,613 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)学生:10000000001-报名缴费成功提示是否跳转：true
+2017-11-07 16:10:36,633 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)学生：10000000001报名手机为：15100422187
+2017-11-07 16:10:36,633 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]infoEnd(line:54)…………………………………………………学生:10000000001;-………………………………………………………………………end
+2017-11-07 16:10:36,633 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]infoStart(line:50)…………………………………………………学生:15100422187;考试系统查看是否有该考试：统上自动化2-1510042117335-…………………………………………………………………………start
+2017-11-07 16:10:36,633 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)authBrowserWin7:http://172.16.231.45:8089/wd/hub
+2017-11-07 16:10:49,911 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: username输入15100422187
+2017-11-07 16:10:50,114 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: password输入123456
+2017-11-07 16:10:50,320 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)在By.id: vcode输入123
+2017-11-07 16:11:21,246 ERROR TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]error(line:66)元素:By.xpath: .//*[contains(text(),'统上自动化2-1510042117335')]查找超时
+2017-11-07 16:11:21,246 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)元素:By.xpath: .//*[contains(text(),'统上自动化2-1510042117335')]不存在
+2017-11-07 16:11:21,246 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]info(line:46)学生：15100422187；登录考试-考试列表中是否存在该场考试：false
+2017-11-07 16:11:22,115 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]infoEnd(line:54)…………………………………………………学生:15100422187;考试系统查看是否有该考试：统上自动化2-1510042117335-………………………………………………………………………end
+2017-11-07 16:11:22,115 INFO TestNG [testCase.smokeTest.entranExamNoPayOnlineCase]infoEnd(line:54)…………………………………………………冒烟测试-统招线上类考试（新建考试-审核通过-报名-未缴费）-………………………………………………………………………end
